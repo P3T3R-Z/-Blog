@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="vue2.x," />
+  <meta name="keywords" content="nodejs," />
 
 
 
@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="更换npm镜像为淘宝的cmd中找到cd到你文件位置，执行下面命令: 1npm config set registry https://registry.npm.taobao.org 完了之后再执行npm install 重新安装包依赖删除node_modules文件，之后执行npm install 另辟蹊径以上步骤都不行的话，可以尝试更新webpack或者node版本，重新搭建vue2.0脚手架，">
-<meta name="keywords" content="vue2.x">
+<meta name="description" content="思路 通过request模块请求网址,得到目标网页的dom结构 通过cheerio模块分析dom结构,获取图片地址 再次request图片地址,得到的数据存储本地文件  执行下载第三方模块npm install request cheerio config.js中配置图片输出位置,待用1234567891011const path=require(&apos;path&apos;);const fs = requir">
+<meta name="keywords" content="nodejs">
 <meta property="og:type" content="article">
-<meta property="og:title" content="vue2.x下 “webpack-dev-server不是内部或外部命令，也不是可运行的程序 或批处理文件”,报错的几种处理方式">
-<meta property="og:url" content="https://blog.peterzhu.club/2017/06/14/vue2.x下 webpack-dev-server的error/index.html">
+<meta property="og:title" content="我的nodejs之旅----爬虫网页图片">
+<meta property="og:url" content="https://blog.peterzhu.club/2017/07/20/我的node之旅/index.html">
 <meta property="og:site_name" content="P3T3R的编程随笔">
-<meta property="og:description" content="更换npm镜像为淘宝的cmd中找到cd到你文件位置，执行下面命令: 1npm config set registry https://registry.npm.taobao.org 完了之后再执行npm install 重新安装包依赖删除node_modules文件，之后执行npm install 另辟蹊径以上步骤都不行的话，可以尝试更新webpack或者node版本，重新搭建vue2.0脚手架，">
+<meta property="og:description" content="思路 通过request模块请求网址,得到目标网页的dom结构 通过cheerio模块分析dom结构,获取图片地址 再次request图片地址,得到的数据存储本地文件  执行下载第三方模块npm install request cheerio config.js中配置图片输出位置,待用1234567891011const path=require(&apos;path&apos;);const fs = requir">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-09-19T03:30:33.800Z">
+<meta property="og:updated_time" content="2018-09-20T07:07:51.654Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="vue2.x下 “webpack-dev-server不是内部或外部命令，也不是可运行的程序 或批处理文件”,报错的几种处理方式">
-<meta name="twitter:description" content="更换npm镜像为淘宝的cmd中找到cd到你文件位置，执行下面命令: 1npm config set registry https://registry.npm.taobao.org 完了之后再执行npm install 重新安装包依赖删除node_modules文件，之后执行npm install 另辟蹊径以上步骤都不行的话，可以尝试更新webpack或者node版本，重新搭建vue2.0脚手架，">
+<meta name="twitter:title" content="我的nodejs之旅----爬虫网页图片">
+<meta name="twitter:description" content="思路 通过request模块请求网址,得到目标网页的dom结构 通过cheerio模块分析dom结构,获取图片地址 再次request图片地址,得到的数据存储本地文件  执行下载第三方模块npm install request cheerio config.js中配置图片输出位置,待用1234567891011const path=require(&apos;path&apos;);const fs = requir">
 
 
 
@@ -120,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="https://blog.peterzhu.club/2017/06/14/vue2.x下 webpack-dev-server的error/"/>
+  <link rel="canonical" href="https://blog.peterzhu.club/2017/07/20/我的node之旅/"/>
 
 
 
 
 
-  <title>vue2.x下 “webpack-dev-server不是内部或外部命令，也不是可运行的程序 或批处理文件”,报错的几种处理方式 | P3T3R的编程随笔</title>
+  <title>我的nodejs之旅----爬虫网页图片 | P3T3R的编程随笔</title>
   
 
 
@@ -253,7 +253,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://blog.peterzhu.club/2017/06/14/vue2.x下 webpack-dev-server的error/">
+    <link itemprop="mainEntityOfPage" href="https://blog.peterzhu.club/2017/07/20/我的node之旅/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="P3T3R">
@@ -270,7 +270,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">vue2.x下 “webpack-dev-server不是内部或外部命令，也不是可运行的程序 或批处理文件”,报错的几种处理方式</h2>
+          <h2 class="post-title" itemprop="name headline">我的nodejs之旅----爬虫网页图片</h2>
         
 
         <div class="post-meta">
@@ -282,8 +282,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-14T16:01:03+08:00">
-                2017-06-14
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-20T13:37:58+08:00">
+                2017-07-20
               </time>
             
 
@@ -305,8 +305,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/前端开发/" itemprop="url" rel="index">
-                    <span itemprop="name">前端开发</span>
+                  <a href="/categories/Node-js/" itemprop="url" rel="index">
+                    <span itemprop="name">Node.js</span>
                   </a>
                 </span>
 
@@ -342,15 +342,15 @@
       
 
       
-        <h4 id="更换npm镜像为淘宝的"><a href="#更换npm镜像为淘宝的" class="headerlink" title="更换npm镜像为淘宝的"></a>更换npm镜像为淘宝的</h4><p>cmd中找到cd到你文件位置，执行下面命令:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm config <span class="built_in">set</span> registry https://registry.npm.taobao.org</span><br></pre></td></tr></table></figure>
-<p>完了之后再执行<code>npm install</code></p>
-<h4 id="重新安装包依赖"><a href="#重新安装包依赖" class="headerlink" title="重新安装包依赖"></a>重新安装包依赖</h4><p>删除node_modules文件，之后执行<code>npm install</code></p>
-<h4 id="另辟蹊径"><a href="#另辟蹊径" class="headerlink" title="另辟蹊径"></a>另辟蹊径</h4><p>以上步骤都不行的话，可以尝试更新webpack或者node版本，重新搭建vue2.0脚手架，然后再执行上面的任意一个方案，或者尝试vue3.0,关于vue3.0的配置安装和和使用,我会在之后写到。</p>
-<p><br><br><br></p>
-<blockquote>
-<p><a href="http://blog.peterzhu.club/">home</a></p>
-</blockquote>
+        <h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><ol>
+<li>通过request模块请求网址,得到目标网页的dom结构</li>
+<li>通过cheerio模块分析dom结构,获取图片地址</li>
+<li>再次request图片地址,得到的数据存储本地文件</li>
+</ol>
+<h4 id="执行"><a href="#执行" class="headerlink" title="执行"></a>执行</h4><p>下载第三方模块<br><code>npm install request cheerio</code></p>
+<p>config.js中<br>配置图片输出位置,待用<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> path=<span class="built_in">require</span>(<span class="string">'path'</span>);</span><br><span class="line"><span class="keyword">const</span> fs = <span class="built_in">require</span>(<span class="string">'fs'</span>)</span><br><span class="line">fs.mkdir(<span class="string">'./img'</span>,<span class="function"><span class="keyword">function</span>(<span class="params">err</span>)</span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(err)&#123;</span><br><span class="line">		<span class="built_in">console</span>.error(err);</span><br><span class="line">	&#125;</span><br><span class="line">		<span class="built_in">console</span>.log(<span class="string">'创建目录成功'</span>);</span><br><span class="line">&#125;);</span><br><span class="line"><span class="keyword">const</span> imgDir=path.join(__dirname, <span class="string">'img'</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports.imgDir=imgDir;</span><br></pre></td></tr></table></figure></p>
+<p>analyze.js中<br>引入cheerio模块,获取dom中图片的src属性,之后添加callback待用<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> cheerio =<span class="built_in">require</span>(<span class="string">'cheerio'</span>);</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">findImg</span>(<span class="params">dom, callback</span>)</span>&#123;</span><br><span class="line">	<span class="keyword">let</span> $= cheerio.load(dom);</span><br><span class="line">	$(<span class="string">'img'</span>).each(<span class="function"><span class="keyword">function</span>(<span class="params">i, elem</span>) </span>&#123;</span><br><span class="line">		<span class="keyword">let</span> imgSrc= $(<span class="keyword">this</span>).attr(<span class="string">'src'</span>);</span><br><span class="line">		<span class="built_in">console</span>.log(<span class="string">'图片地址-&gt;'</span>+imgSrc)</span><br><span class="line">		callback(imgSrc, i);</span><br><span class="line">	&#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports.findImg= findImg;</span><br></pre></td></tr></table></figure></p>
+<p>index.js中<br>请求目标网页的地址后,分析dom中的图片src,之后写入本地<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> request= <span class="built_in">require</span>(<span class="string">'request'</span>);</span><br><span class="line"><span class="keyword">const</span> path=<span class="built_in">require</span>(<span class="string">'path'</span>);</span><br><span class="line"><span class="keyword">const</span> analyze = <span class="built_in">require</span>(<span class="string">'./analyze'</span>);</span><br><span class="line"><span class="keyword">const</span> config = <span class="built_in">require</span>(<span class="string">'./config'</span>);</span><br><span class="line"><span class="keyword">const</span> fs = <span class="built_in">require</span>(<span class="string">'fs'</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">start</span>(<span class="params">crawledPath</span>) </span>&#123;</span><br><span class="line">	request(crawledPath, <span class="function"><span class="keyword">function</span>(<span class="params">err, res, body</span>) </span>&#123;</span><br><span class="line">		<span class="keyword">if</span>(!err &amp;&amp; res)&#123;</span><br><span class="line">			<span class="built_in">console</span>.log(<span class="string">'start'</span>);</span><br><span class="line">			analyze.findImg(body, downLoad);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//图片写入</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">downLoad</span>(<span class="params">imgUrl, i</span>) </span>&#123;</span><br><span class="line">	<span class="keyword">let</span> ext = imgUrl.split(<span class="string">'.'</span>).pop();</span><br><span class="line">	<span class="comment">//console.log('后缀名',ext)</span></span><br><span class="line">	<span class="comment">//console.log(imgUrl)</span></span><br><span class="line">	request(imgUrl).pipe(fs.createWriteStream(path.join(config.imgDir, i+<span class="string">'.jpg'</span>) ,&#123;<span class="string">'encoding'</span>: <span class="string">'utf8'</span>&#125;))</span><br><span class="line">	<span class="built_in">console</span>.log(<span class="string">'已抓取图片'</span>+i+<span class="string">'个'</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//爬取例子:</span></span><br><span class="line"><span class="keyword">const</span> crawledPath=<span class="string">"http://loftermeirenzhi.lofter.com/tag/%E4%BA%BA%E5%83%8F?page="</span>;</span><br><span class="line">start(crawledPath)</span><br></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -368,7 +368,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/vue2-x/" rel="tag"># vue2.x</a>
+            <a href="/tags/nodejs/" rel="tag"># nodejs</a>
           
         </div>
       
@@ -381,8 +381,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/06/14/hello-world/" rel="next" title="Hello World">
-                <i class="fa fa-chevron-left"></i> Hello World
+              <a href="/2017/07/02/解决-webkit-box-orient-vertical打包后丢失/" rel="next" title="解决-webkit-box-orient:vertical打包后的丢失">
+                <i class="fa fa-chevron-left"></i> 解决-webkit-box-orient:vertical打包后的丢失
               </a>
             
           </div>
@@ -390,10 +390,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/06/14/vue2.x兼容ie9+的解决方案与调试/" rel="prev" title="vue2.x兼容ie9+的解决方案与调试">
-                vue2.x兼容ie9+的解决方案与调试 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -525,7 +521,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#更换npm镜像为淘宝的"><span class="nav-number">1.</span> <span class="nav-text">更换npm镜像为淘宝的</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#重新安装包依赖"><span class="nav-number">2.</span> <span class="nav-text">重新安装包依赖</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#另辟蹊径"><span class="nav-number">3.</span> <span class="nav-text">另辟蹊径</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#思路"><span class="nav-number">1.</span> <span class="nav-text">思路</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#执行"><span class="nav-number">2.</span> <span class="nav-text">执行</span></a></li></ol></div>
             
 
           </div>
