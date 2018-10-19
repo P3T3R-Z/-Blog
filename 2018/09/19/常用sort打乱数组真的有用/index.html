@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="javascript," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="JavaScript 开发中有时会遇到要将一个数组随机排序（shuffle）的需求，一个常见的写法是这样： 12345function shuffle(arr) &amp;#123;   arr.sort(function () &amp;#123;      return Math.random() - 0.5;   &amp;#125;);&amp;#125; 或者使用更简洁的 ES6 的写法： 123function sh">
+<meta name="keywords" content="javascript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="常用sort打乱数组真的有用?">
+<meta property="og:url" content="https://blog.peterzhu.club/2018/09/19/常用sort打乱数组真的有用/index.html">
+<meta property="og:site_name" content="P3T3R的编程随笔">
+<meta property="og:description" content="JavaScript 开发中有时会遇到要将一个数组随机排序（shuffle）的需求，一个常见的写法是这样： 12345function shuffle(arr) &amp;#123;   arr.sort(function () &amp;#123;      return Math.random() - 0.5;   &amp;#125;);&amp;#125; 或者使用更简洁的 ES6 的写法： 123function sh">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://blog.peterzhu.club/2018/09/19/常用sort打乱数组真的有用/%E5%B8%B8%E7%94%A8sort%E6%89%93%E4%B9%B1%E6%95%B0%E7%BB%84%E7%9C%9F%E7%9A%84%E6%9C%89%E7%94%A8/1.png">
+<meta property="og:image" content="https://blog.peterzhu.club/2018/09/19/常用sort打乱数组真的有用/%E5%B8%B8%E7%94%A8sort%E6%89%93%E4%B9%B1%E6%95%B0%E7%BB%84%E7%9C%9F%E7%9A%84%E6%9C%89%E7%94%A8/2.png">
+<meta property="og:image" content="https://blog.peterzhu.club/2018/09/19/常用sort打乱数组真的有用/%E5%B8%B8%E7%94%A8sort%E6%89%93%E4%B9%B1%E6%95%B0%E7%BB%84%E7%9C%9F%E7%9A%84%E6%9C%89%E7%94%A8/3.png">
+<meta property="og:updated_time" content="2018-10-19T08:20:03.917Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="常用sort打乱数组真的有用?">
+<meta name="twitter:description" content="JavaScript 开发中有时会遇到要将一个数组随机排序（shuffle）的需求，一个常见的写法是这样： 12345function shuffle(arr) &amp;#123;   arr.sort(function () &amp;#123;      return Math.random() - 0.5;   &amp;#125;);&amp;#125; 或者使用更简洁的 ES6 的写法： 123function sh">
+<meta name="twitter:image" content="https://blog.peterzhu.club/2018/09/19/常用sort打乱数组真的有用/%E5%B8%B8%E7%94%A8sort%E6%89%93%E4%B9%B1%E6%95%B0%E7%BB%84%E7%9C%9F%E7%9A%84%E6%9C%89%E7%94%A8/1.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://blog.peterzhu.club/2018/09/19/常用sort打乱数组真的有用/"/>
+
+
+
+
+
+  <title>常用sort打乱数组真的有用? | P3T3R的编程随笔</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">P3T3R的编程随笔</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">编程随笔</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://blog.peterzhu.club/2018/09/19/常用sort打乱数组真的有用/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="P3T3R">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="P3T3R的编程随笔">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">常用sort打乱数组真的有用?</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-19T20:11:00+08:00">
+                2018-09-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/前端开发/" itemprop="url" rel="index">
+                    <span itemprop="name">前端开发</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>JavaScript 开发中有时会遇到要将一个数组随机排序（shuffle）的需求，一个常见的写法是这样：</p>
+<p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">shuffle</span>(<span class="params">arr</span>) </span>&#123;</span><br><span class="line">   arr.sort(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="built_in">Math</span>.random() - <span class="number">0.5</span>;</span><br><span class="line">   &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>或者使用更简洁的 ES6 的写法：</p>
+<p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">shuffle</span>(<span class="params">arr</span>) </span>&#123;</span><br><span class="line">    arr.sort(<span class="function"><span class="params">()</span> =&gt;</span> <span class="built_in">Math</span>.random() - <span class="number">0.5</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>我也曾经经常使用这种写法，不久前才意识到，这种写法是有问题的，它并不能真正地随机打乱数组。
+ </p>
+<h4>问题</h4>
+<p>看下面的代码，我们生成一个长度为 10 的数组['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j']，使用上面的方法将数组乱序，执行多次后，会发现每个元素仍然有很大机率在它原来的位置附近出现。
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> n = <span class="number">10000</span>;</span><br><span class="line"><span class="keyword">let</span> count = (<span class="keyword">new</span> <span class="built_in">Array</span>(<span class="number">10</span>)).fill(<span class="number">0</span>);</span><br><span class="line"> </span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; n; i ++) &#123;</span><br><span class="line">    <span class="keyword">let</span> arr = [<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>, <span class="string">'d'</span>, <span class="string">'e'</span>, <span class="string">'f'</span>, <span class="string">'g'</span>, <span class="string">'h'</span>, <span class="string">'i'</span>, <span class="string">'j'</span>];</span><br><span class="line">    arr.sort(<span class="function"><span class="params">()</span> =&gt;</span> <span class="built_in">Math</span>.random() - <span class="number">0.5</span>);</span><br><span class="line">    count[arr.indexOf(<span class="string">'a'</span>)]++;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="built_in">console</span>.log(count);</span><br></pre></td></tr></table></figure></p>
+<p>在 Node.JS 6 中执行，输出[ 2891, 2928, 1927, 1125, 579, 270, 151, 76, 34, 19 ]（带有一定随机性，每次结果都不同，但大致分布应该一致），即进行 10000 次排序后，字母'a'（数组中的第一个元素）有约 2891 次出现在第一个位置、2928 次出现在第二个位置，与之对应的只有 19 次出现在最后一个位置。如果把这个分布绘制成图像，会是下面这样：
+ 
+<img src="/2018/09/19/常用sort打乱数组真的有用/%E5%B8%B8%E7%94%A8sort%E6%89%93%E4%B9%B1%E6%95%B0%E7%BB%84%E7%9C%9F%E7%9A%84%E6%9C%89%E7%94%A8/1.png" alt="1"></p>
+<p>类似地，我们可以算出字母'f'（数组中的第六个元素）在各个位置出现的分布为[ 312, 294, 579, 1012, 1781, 2232, 1758, 1129, 586, 317 ]，图像如下：
+ 
+<img src="/2018/09/19/常用sort打乱数组真的有用/%E5%B8%B8%E7%94%A8sort%E6%89%93%E4%B9%B1%E6%95%B0%E7%BB%84%E7%9C%9F%E7%9A%84%E6%9C%89%E7%94%A8/2.png" alt="2"></p>
+<p>如果排序真的是随机的，那么每个元素在每个位置出现的概率都应该一样，实验结果各个位置的数字应该很接近，而不应像现在这样明显地集中在原来位置附近。因此，我们可以认为，使用形如arr.sort(() =&gt; Math.random() - 0.5)这样的方法得到的并不是真正的随机排序。
+ 
+另外，需要注意的是上面的分布仅适用于数组长度不超过 10 的情况，如果数组更长，比如长度为 11，则会是另一种分布。比如：
+ 
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a = [<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>, <span class="string">'d'</span>, <span class="string">'e'</span>, <span class="string">'f'</span>, <span class="string">'g'</span>, <span class="string">'h'</span>, <span class="string">'i'</span>, <span class="string">'j'</span>, <span class="string">'k'</span>]; <span class="comment">// 长度为11</span></span><br><span class="line"><span class="keyword">let</span> n = <span class="number">10000</span>;</span><br><span class="line"><span class="keyword">let</span> count = (<span class="keyword">new</span> <span class="built_in">Array</span>(a.length)).fill(<span class="number">0</span>);</span><br><span class="line"> </span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; n; i ++) &#123;</span><br><span class="line">    <span class="keyword">let</span> arr = [].concat(a);</span><br><span class="line">    arr.sort(<span class="function"><span class="params">()</span> =&gt;</span> <span class="built_in">Math</span>.random() - <span class="number">0.5</span>);</span><br><span class="line">    count[arr.indexOf(<span class="string">'a'</span>)]++;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="built_in">console</span>.log(count);</span><br></pre></td></tr></table></figure></p>
+<p>在 Node.JS 6 中执行，结果为[ 785, 819, 594, 679, 941, 1067, 932, 697, 624, 986, 1876 ]，其中第一个元素'a'的分布图如下：
+ 
+<img src="/2018/09/19/常用sort打乱数组真的有用/%E5%B8%B8%E7%94%A8sort%E6%89%93%E4%B9%B1%E6%95%B0%E7%BB%84%E7%9C%9F%E7%9A%84%E6%9C%89%E7%94%A8/3.png" alt="3"></p>
+<p>分布不同的原因是 v8 引擎中针对短数组和长数组使用了不同的排序方法（下面会讲）。可以看到，两种算法的结果虽然不同，但都明显不够均匀。
+ 
+国外有人写了一个Shuffle算法可视化的页面，在上面可以更直观地看到使用arr.sort(() =&gt; Math.random() - 0.5)的确是很不随机的。
+ </p>
+<h4>探索</h4>
+<p>看了一下ECMAScript中关于Array.prototype.sort(comparefn)的标准，其中并没有规定具体的实现算法，但是提到一点：</p>
+<p><code>Calling comparefn(a,b) always returns the same value v when given a specific pair of values a and b as its two arguments.</code></p>
+<p>也就是说，对同一组a、b的值，<code>comparefn(a, b)</code>需要总是返回相同的值。而上面的<code>() =&gt; Math.random() - 0.5（即(a, b) =&gt; Math.random() - 0.5）</code>显然不满足这个条件。</p>
+<p>翻看v8引擎数组部分的源码，注意到它出于对性能的考虑，对短数组使用的是插入排序，对长数组则使用了快速排序，至此，也就能理解为什么() =&gt; Math.random() - 0.5并不能真正随机打乱数组排序了。（有一个没明白的地方：源码中说的是对长度小于等于 22 的使用插入排序，大于 22 的使用快排，但实际测试结果显示分界长度是 10。）</p>
+<h4>解决方案</h4>
+<p>知道问题所在，解决方案也就比较简单了。
+ </p>
+<h5>方案一</h5>
+<p>既然(a, b) =&gt; Math.random() - 0.5的问题是不能保证针对同一组a、b每次返回的值相同，那么我们不妨将数组元素改造一下，比如将每个元素i改造为：
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> new_i = &#123;</span><br><span class="line">    v: i,</span><br><span class="line">    r: <span class="built_in">Math</span>.random()</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<p>即将它改造为一个对象，原来的值存储在键v中，同时给它增加一个键r，值为一个随机数，然后排序时比较这个随机数：
+<code>arr.sort((a, b) =&gt; a.r - b.r);</code>
+完整代码如下：
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">shuffle</span>(<span class="params">arr</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> new_arr = arr.map(<span class="function"><span class="params">i</span> =&gt;</span> (&#123;<span class="attr">v</span>: i, <span class="attr">r</span>: <span class="built_in">Math</span>.random()&#125;));</span><br><span class="line">    new_arr.sort(<span class="function">(<span class="params">a, b</span>) =&gt;</span> a.r - b.r);</span><br><span class="line">    arr.splice(<span class="number">0</span>, arr.length, ...new_arr.map(<span class="function"><span class="params">i</span> =&gt;</span> i.v));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a = [<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>, <span class="string">'d'</span>, <span class="string">'e'</span>, <span class="string">'f'</span>, <span class="string">'g'</span>, <span class="string">'h'</span>, <span class="string">'i'</span>, <span class="string">'j'</span>];</span><br><span class="line"><span class="keyword">let</span> n = <span class="number">10000</span>;</span><br><span class="line"><span class="keyword">let</span> count = (<span class="keyword">new</span> <span class="built_in">Array</span>(a.length)).fill(<span class="number">0</span>);</span><br><span class="line"> </span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; n; i ++) &#123;</span><br><span class="line">    shuffle(a);</span><br><span class="line">    count[a.indexOf(<span class="string">'a'</span>)]++;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="built_in">console</span>.log(count);</span><br></pre></td></tr></table></figure></p>
+<p>一次执行结果为：[ 1023, 991, 1007, 967, 990, 1032, 968, 1061, 990, 971 ]。多次验证，同时在这儿查看shuffle(arr)函数结果的可视化分布，可以看到，这个方法可以认为足够随机了。
+ </p>
+<h5>方案二（Fisher–Yates shuffle）</h5>
+<p>需要注意的是，上面的方法虽然满足随机性要求了，但在性能上并不是很好，需要遍历几次数组，还要对数组进行splice等操作。</p>
+<p>考察Lodash 库中的 shuffle 算法，注意到它使用的实际上是Fisher–Yates 洗牌算法，这个算法由 Ronald Fisher 和 Frank Yates 于 1938 年提出，然后在 1964 年由 Richard Durstenfeld 改编为适用于电脑编程的版本。用伪代码描述如下：
+<figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- To shuffle an array a of n elements (indices 0..n-1):  </span></span><br><span class="line">    <span class="keyword">for</span> i <span class="built_in">from</span> n−<span class="number">1</span> downto <span class="number">1</span> <span class="built_in">do</span>  </span><br><span class="line">        j ← <span class="built_in">random</span> <span class="keyword">integer</span> such that <span class="number">0</span> ≤ j ≤ i  </span><br><span class="line">        exchange <span class="keyword">a</span>[j] <span class="keyword">and</span> <span class="keyword">a</span>[i]</span><br></pre></td></tr></table></figure></p>
+<p>一个实现如下（ES6）：
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">shuffle</span>(<span class="params">arr</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> i = arr.length;</span><br><span class="line">    <span class="keyword">while</span> (i) &#123;</span><br><span class="line">        <span class="keyword">let</span> j = <span class="built_in">Math</span>.floor(<span class="built_in">Math</span>.random() * i--);</span><br><span class="line">        [arr[j], arr[i]] = [arr[i], arr[j]];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>或者对应的 ES5 版本：
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">shuffle</span>(<span class="params">arr</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> i = arr.length, t, j;</span><br><span class="line">  <span class="keyword">while</span> (i) &#123;</span><br><span class="line">    j = <span class="built_in">Math</span>.floor(<span class="built_in">Math</span>.random() * i--);</span><br><span class="line">    t = arr[i];</span><br><span class="line">    arr[i] = arr[j];</span><br><span class="line">    arr[j] = t;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p> </p>
+<h4>小结</h4>
+<p>如果要将数组随机排序，千万不要再用(a, b) =&gt; Math.random() - 0.5这样的方法。
+目前而言，Fisher–Yates shuffle 算法应该是最好的选择。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/javascript/" rel="tag"># javascript</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/08/02/vue-video-player/" rel="next" title="vue-video-player 插件使用">
+                <i class="fa fa-chevron-left"></i> vue-video-player 插件使用
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/09/22/slideUp-slideDown效果/" rel="prev" title="css3实现slideUp/slideDown效果">
+                css3实现slideUp/slideDown效果 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">P3T3R</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text">探索</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">3.</span> <span class="nav-text">解决方案</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#undefined"><span class="nav-number">3.1.</span> <span class="nav-text">方案一</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#undefined"><span class="nav-number">3.2.</span> <span class="nav-text">方案二（Fisher–Yates shuffle）</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">4.</span> <span class="nav-text">小结</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">P3T3R</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
