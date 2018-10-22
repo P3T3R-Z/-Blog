@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next mist use-motion" lang="zh-Hans">
+<html class="theme-next gemini use-motion" lang="zh-Hans">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="纯css3实现 1234567&amp;lt;h1&amp;gt;&amp;lt;mark&amp;gt;PURE CSS&amp;lt;/mark&amp;gt; Slide Up and Slide Down&amp;lt;/h1&amp;gt;&amp;lt;input id=&quot;toggle&quot; type=&quot;checkbox&quot;&amp;gt;&amp;lt;label for=&quot;toggle&quot;&amp;gt;toggle slider&amp;lt;/label&amp;gt;&amp;lt;div id=&quot;w">
+<meta name="description" content="¶纯css3实现 1234567&amp;lt;h1&amp;gt;&amp;lt;mark&amp;gt;PURE CSS&amp;lt;/mark&amp;gt; Slide Up and Slide Down&amp;lt;/h1&amp;gt;&amp;lt;input id=&quot;toggle&quot; type=&quot;checkbox&quot;&amp;gt;&amp;lt;label for=&quot;toggle&quot;&amp;gt;toggle slider&amp;lt;/label&amp;gt;&amp;lt;div id=&quot;">
 <meta name="keywords" content="css3">
 <meta property="og:type" content="article">
 <meta property="og:title" content="css3实现slideUp&#x2F;slideDown效果">
 <meta property="og:url" content="https://blog.peterzhu.club/2018/09/22/slideUp-slideDown效果/index.html">
 <meta property="og:site_name" content="P3T3R的编程随笔">
-<meta property="og:description" content="纯css3实现 1234567&amp;lt;h1&amp;gt;&amp;lt;mark&amp;gt;PURE CSS&amp;lt;/mark&amp;gt; Slide Up and Slide Down&amp;lt;/h1&amp;gt;&amp;lt;input id=&quot;toggle&quot; type=&quot;checkbox&quot;&amp;gt;&amp;lt;label for=&quot;toggle&quot;&amp;gt;toggle slider&amp;lt;/label&amp;gt;&amp;lt;div id=&quot;w">
+<meta property="og:description" content="¶纯css3实现 1234567&amp;lt;h1&amp;gt;&amp;lt;mark&amp;gt;PURE CSS&amp;lt;/mark&amp;gt; Slide Up and Slide Down&amp;lt;/h1&amp;gt;&amp;lt;input id=&quot;toggle&quot; type=&quot;checkbox&quot;&amp;gt;&amp;lt;label for=&quot;toggle&quot;&amp;gt;toggle slider&amp;lt;/label&amp;gt;&amp;lt;div id=&quot;">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2018-10-19T08:19:34.878Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="css3实现slideUp&#x2F;slideDown效果">
-<meta name="twitter:description" content="纯css3实现 1234567&amp;lt;h1&amp;gt;&amp;lt;mark&amp;gt;PURE CSS&amp;lt;/mark&amp;gt; Slide Up and Slide Down&amp;lt;/h1&amp;gt;&amp;lt;input id=&quot;toggle&quot; type=&quot;checkbox&quot;&amp;gt;&amp;lt;label for=&quot;toggle&quot;&amp;gt;toggle slider&amp;lt;/label&amp;gt;&amp;lt;div id=&quot;w">
+<meta name="twitter:description" content="¶纯css3实现 1234567&amp;lt;h1&amp;gt;&amp;lt;mark&amp;gt;PURE CSS&amp;lt;/mark&amp;gt; Slide Up and Slide Down&amp;lt;/h1&amp;gt;&amp;lt;input id=&quot;toggle&quot; type=&quot;checkbox&quot;&amp;gt;&amp;lt;label for=&quot;toggle&quot;&amp;gt;toggle slider&amp;lt;/label&amp;gt;&amp;lt;div id=&quot;">
 
 
 
@@ -98,7 +98,7 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Mist',
+    scheme: 'Gemini',
     version: '5.1.4',
     sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
@@ -328,6 +328,16 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/09/22/slideUp-slideDown效果/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/09/22/slideUp-slideDown效果/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -352,13 +362,13 @@
       
 
       
-        <h4>纯css3实现</h4>
-<p><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">h1</span>&gt;</span><span class="tag">&lt;<span class="name">mark</span>&gt;</span>PURE CSS<span class="tag">&lt;/<span class="name">mark</span>&gt;</span> Slide Up and Slide Down<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">id</span>=<span class="string">"toggle"</span> <span class="attr">type</span>=<span class="string">"checkbox"</span>&gt;</span><span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">"toggle"</span>&gt;</span>toggle slider<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"wrap"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"slider"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">p</span>&gt;</span>Blah blah blah blah blah....<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
-<p><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-id">#wrap</span> &#123;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">200px</span>;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">200px</span>;</span><br><span class="line">    <span class="attribute">border</span>: <span class="number">1px</span> solid <span class="number">#ccc</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-id">#slider</span> &#123;</span><br><span class="line">    <span class="attribute">overflow-y</span>: hidden;</span><br><span class="line">    <span class="attribute">max-height</span>: <span class="number">200px</span>;</span><br><span class="line">    <span class="attribute">-webkit-transition</span>: all .<span class="number">5s</span> <span class="built_in">cubic-bezier</span>(0, 1, 0.5, 1);</span><br><span class="line">    <span class="attribute">transition</span>: all .<span class="number">5s</span> <span class="built_in">cubic-bezier</span>(0, 1, 0.5, 1);</span><br><span class="line">    <span class="attribute">background</span>: pink;</span><br><span class="line">    <span class="attribute">height</span>: inherit; </span><br><span class="line">    <span class="attribute">width</span>: inherit;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-id">#toggle</span> &#123;</span><br><span class="line">    <span class="attribute">display</span>: none;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-id">#toggle</span> + <span class="selector-tag">label</span> &#123;</span><br><span class="line">    <span class="attribute">padding</span>: <span class="number">1px</span> <span class="number">6px</span>;</span><br><span class="line">    <span class="attribute">text-align</span>: center;</span><br><span class="line">    <span class="attribute">border-radius</span>: <span class="number">2px</span>;</span><br><span class="line">    <span class="attribute">background</span>: <span class="built_in">rgb</span>(221, 221, 221);</span><br><span class="line">    <span class="attribute">border</span>: <span class="number">1px</span> outset buttonface;</span><br><span class="line">    <span class="attribute">margin-bottom</span>: <span class="number">2px</span>;</span><br><span class="line">    <span class="attribute">display</span>: inline-block;</span><br><span class="line">    <span class="attribute">cursor</span>: pointer;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/* most important part is here: */</span></span><br><span class="line"><span class="selector-id">#toggle</span><span class="selector-pseudo">:checked</span> ~ <span class="selector-id">#wrap</span> &gt; <span class="selector-id">#slider</span> &#123;</span><br><span class="line">    <span class="attribute">max-height</span>: <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h4>css3+Js实现</h4>
-<p><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">id</span>=<span class="string">"toggleSlider"</span>&gt;</span>Toggle Slider<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"row"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"slide"</span>&gt;</span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim minus repellat amet nobis hic dolores blanditiis inventore quo ex quaerat omnis accusantium adipisci velit laborum facilis culpa nemo ab placeat!Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloremque voluptates tempore optio est nihil earum neque atque vero voluptatibus deserunt. Doloribus error voluptatem non quo molestias quisquam repellat odio tempora.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus culpa voluptate architecto deserunt nemo animi officiis debitis necessitatibus deleniti nobis pariatur doloribus facilis suscipit ipsa earum consectetur eligendi. Perspiciatis ratione. lorem<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
-<p><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.row</span> &#123;</span><br><span class="line">  <span class="attribute">border</span>: <span class="number">1px</span> solid <span class="built_in">rgba</span>(255, 0, 0, .7);</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">400px</span>;</span><br><span class="line">  <span class="attribute">overflow</span>: hidden;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="selector-class">.slide</span> &#123;</span><br><span class="line">  <span class="attribute">background-color</span>: <span class="built_in">rgba</span>(0, 255, 0, .3);</span><br><span class="line">  <span class="attribute">padding</span>: <span class="number">5px</span>;</span><br><span class="line">  <span class="attribute">transition</span>: all  .<span class="number">5s</span> <span class="built_in">cubic-bezier</span>(0, 1, 0.5, 1);</span><br><span class="line">  <span class="attribute">transform</span>: <span class="built_in">translateY</span>(0);</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="selector-class">.slide-up</span> &#123;</span><br><span class="line">  <span class="attribute">transform</span>: <span class="built_in">translateY</span>(-100%);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> toggleButton = <span class="built_in">document</span>.getElementById(<span class="string">'toggleSlider'</span>),</span><br><span class="line">    slide = <span class="built_in">document</span>.querySelector(<span class="string">'.slide'</span>);</span><br><span class="line"> </span><br><span class="line">toggleButton.addEventListener(<span class="string">'click'</span>, toggleSlider, <span class="literal">false</span>);</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">toggleSlider</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (slide.classList.contains(<span class="string">'slide-up'</span>)) &#123;</span><br><span class="line">    slide.classList.remove(<span class="string">'slide-up'</span>);</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    slide.classList.add(<span class="string">'slide-up'</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+        <h4 id="chun-css-3-shi-xian"><a class="header-anchor" href="#纯css3实现">¶</a>纯css3实现</h4>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">h1</span>&gt;</span><span class="tag">&lt;<span class="name">mark</span>&gt;</span>PURE CSS<span class="tag">&lt;/<span class="name">mark</span>&gt;</span> Slide Up and Slide Down<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">id</span>=<span class="string">"toggle"</span> <span class="attr">type</span>=<span class="string">"checkbox"</span>&gt;</span><span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">"toggle"</span>&gt;</span>toggle slider<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"wrap"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"slider"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">p</span>&gt;</span>Blah blah blah blah blah....<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-id">#wrap</span> &#123;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">200px</span>;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">200px</span>;</span><br><span class="line">    <span class="attribute">border</span>: <span class="number">1px</span> solid <span class="number">#ccc</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-id">#slider</span> &#123;</span><br><span class="line">    <span class="attribute">overflow-y</span>: hidden;</span><br><span class="line">    <span class="attribute">max-height</span>: <span class="number">200px</span>;</span><br><span class="line">    <span class="attribute">-webkit-transition</span>: all .<span class="number">5s</span> <span class="built_in">cubic-bezier</span>(0, 1, 0.5, 1);</span><br><span class="line">    <span class="attribute">transition</span>: all .<span class="number">5s</span> <span class="built_in">cubic-bezier</span>(0, 1, 0.5, 1);</span><br><span class="line">    <span class="attribute">background</span>: pink;</span><br><span class="line">    <span class="attribute">height</span>: inherit; </span><br><span class="line">    <span class="attribute">width</span>: inherit;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-id">#toggle</span> &#123;</span><br><span class="line">    <span class="attribute">display</span>: none;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-id">#toggle</span> + <span class="selector-tag">label</span> &#123;</span><br><span class="line">    <span class="attribute">padding</span>: <span class="number">1px</span> <span class="number">6px</span>;</span><br><span class="line">    <span class="attribute">text-align</span>: center;</span><br><span class="line">    <span class="attribute">border-radius</span>: <span class="number">2px</span>;</span><br><span class="line">    <span class="attribute">background</span>: <span class="built_in">rgb</span>(221, 221, 221);</span><br><span class="line">    <span class="attribute">border</span>: <span class="number">1px</span> outset buttonface;</span><br><span class="line">    <span class="attribute">margin-bottom</span>: <span class="number">2px</span>;</span><br><span class="line">    <span class="attribute">display</span>: inline-block;</span><br><span class="line">    <span class="attribute">cursor</span>: pointer;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/* most important part is here: */</span></span><br><span class="line"><span class="selector-id">#toggle</span><span class="selector-pseudo">:checked</span> ~ <span class="selector-id">#wrap</span> &gt; <span class="selector-id">#slider</span> &#123;</span><br><span class="line">    <span class="attribute">max-height</span>: <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="css-3-js-shi-xian"><a class="header-anchor" href="#css3-js实现">¶</a>css3+Js实现</h4>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">id</span>=<span class="string">"toggleSlider"</span>&gt;</span>Toggle Slider<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"row"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"slide"</span>&gt;</span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim minus repellat amet nobis hic dolores blanditiis inventore quo ex quaerat omnis accusantium adipisci velit laborum facilis culpa nemo ab placeat!Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloremque voluptates tempore optio est nihil earum neque atque vero voluptatibus deserunt. Doloribus error voluptatem non quo molestias quisquam repellat odio tempora.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus culpa voluptate architecto deserunt nemo animi officiis debitis necessitatibus deleniti nobis pariatur doloribus facilis suscipit ipsa earum consectetur eligendi. Perspiciatis ratione. lorem<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.row</span> &#123;</span><br><span class="line">  <span class="attribute">border</span>: <span class="number">1px</span> solid <span class="built_in">rgba</span>(255, 0, 0, .7);</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">400px</span>;</span><br><span class="line">  <span class="attribute">overflow</span>: hidden;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="selector-class">.slide</span> &#123;</span><br><span class="line">  <span class="attribute">background-color</span>: <span class="built_in">rgba</span>(0, 255, 0, .3);</span><br><span class="line">  <span class="attribute">padding</span>: <span class="number">5px</span>;</span><br><span class="line">  <span class="attribute">transition</span>: all  .<span class="number">5s</span> <span class="built_in">cubic-bezier</span>(0, 1, 0.5, 1);</span><br><span class="line">  <span class="attribute">transform</span>: <span class="built_in">translateY</span>(0);</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="selector-class">.slide-up</span> &#123;</span><br><span class="line">  <span class="attribute">transform</span>: <span class="built_in">translateY</span>(-100%);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> toggleButton = <span class="built_in">document</span>.getElementById(<span class="string">'toggleSlider'</span>),</span><br><span class="line">    slide = <span class="built_in">document</span>.querySelector(<span class="string">'.slide'</span>);</span><br><span class="line"> </span><br><span class="line">toggleButton.addEventListener(<span class="string">'click'</span>, toggleSlider, <span class="literal">false</span>);</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">toggleSlider</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (slide.classList.contains(<span class="string">'slide-up'</span>)) &#123;</span><br><span class="line">    slide.classList.remove(<span class="string">'slide-up'</span>);</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    slide.classList.add(<span class="string">'slide-up'</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -431,6 +441,9 @@
           
 
   
+    <div class="comments" id="comments">
+    </div>
+  
 
 
 
@@ -478,7 +491,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-count">12</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -500,7 +513,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-count">9</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -510,6 +523,22 @@
 
           
 
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/P3T3R-Z/" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i></a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:1611216092@qq.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i></a>
+                  </span>
+                
+            </div>
           
 
           
@@ -533,7 +562,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">纯css3实现</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text">css3+Js实现</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#chun-css-3-shi-xian"><span class="nav-text">¶纯css3实现</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#css-3-js-shi-xian"><span class="nav-text">¶css3+Js实现</span></a></li></ol></div>
             
 
           </div>
@@ -665,6 +694,13 @@
   
   
 
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
   
   <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
 <script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
@@ -708,6 +744,28 @@
 
 
 
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'xbiDhpPJfUh2YRD8uhN8fFXl-gzGzoHsz',
+        appKey: '9Aqg2Qbrk8tckTNeMgcGkUgF',
+        placeholder: 'Just go go',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
 
 
 

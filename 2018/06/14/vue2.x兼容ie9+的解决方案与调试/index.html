@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next mist use-motion" lang="zh-Hans">
+<html class="theme-next gemini use-motion" lang="zh-Hans">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="ie9以上的调试 ie控制台若不显示调试内容,可以下载补丁(IE11-Windows6.1-KB3008923-x64.msu)，安装之后就好了。 下载链接：https://www.microsoft.com/zh-cn/download/confirmation.aspx?id=45154 之后若浏览器报Array.includes()等等一系列es6语法的错误,说明是兼容的问题,请继续往下阅读">
+<meta name="description" content="¶ie9以上的调试 ie控制台若不显示调试内容,可以下载补丁(IE11-Windows6.1-KB3008923-x64.msu)，安装之后就好了。 下载链接：https://www.microsoft.com/zh-cn/download/confirmation.aspx?id=45154 之后若浏览器报Array.includes()等等一系列es6语法的错误,说明是兼容的问题,请继续往下阅">
 <meta name="keywords" content="vue2.x">
 <meta property="og:type" content="article">
 <meta property="og:title" content="vue2.x兼容ie9+的解决方案与调试">
 <meta property="og:url" content="https://blog.peterzhu.club/2018/06/14/vue2.x兼容ie9+的解决方案与调试/index.html">
 <meta property="og:site_name" content="P3T3R的编程随笔">
-<meta property="og:description" content="ie9以上的调试 ie控制台若不显示调试内容,可以下载补丁(IE11-Windows6.1-KB3008923-x64.msu)，安装之后就好了。 下载链接：https://www.microsoft.com/zh-cn/download/confirmation.aspx?id=45154 之后若浏览器报Array.includes()等等一系列es6语法的错误,说明是兼容的问题,请继续往下阅读">
+<meta property="og:description" content="¶ie9以上的调试 ie控制台若不显示调试内容,可以下载补丁(IE11-Windows6.1-KB3008923-x64.msu)，安装之后就好了。 下载链接：https://www.microsoft.com/zh-cn/download/confirmation.aspx?id=45154 之后若浏览器报Array.includes()等等一系列es6语法的错误,说明是兼容的问题,请继续往下阅">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2018-10-19T08:19:43.245Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="vue2.x兼容ie9+的解决方案与调试">
-<meta name="twitter:description" content="ie9以上的调试 ie控制台若不显示调试内容,可以下载补丁(IE11-Windows6.1-KB3008923-x64.msu)，安装之后就好了。 下载链接：https://www.microsoft.com/zh-cn/download/confirmation.aspx?id=45154 之后若浏览器报Array.includes()等等一系列es6语法的错误,说明是兼容的问题,请继续往下阅读">
+<meta name="twitter:description" content="¶ie9以上的调试 ie控制台若不显示调试内容,可以下载补丁(IE11-Windows6.1-KB3008923-x64.msu)，安装之后就好了。 下载链接：https://www.microsoft.com/zh-cn/download/confirmation.aspx?id=45154 之后若浏览器报Array.includes()等等一系列es6语法的错误,说明是兼容的问题,请继续往下阅">
 
 
 
@@ -98,7 +98,7 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Mist',
+    scheme: 'Gemini',
     version: '5.1.4',
     sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
@@ -328,6 +328,16 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/06/14/vue2.x兼容ie9+的解决方案与调试/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/06/14/vue2.x兼容ie9+的解决方案与调试/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -352,36 +362,36 @@
       
 
       
-        <h4>ie9以上的调试</h4>
+        <h4 id="ie-9-yi-shang-de-diao-shi"><a class="header-anchor" href="#ie9以上的调试">¶</a>ie9以上的调试</h4>
 <p>ie控制台若不显示调试内容,可以下载补丁(IE11-Windows6.1-KB3008923-x64.msu)，安装之后就好了。</p>
 <p>下载链接：<a href="https://www.microsoft.com/zh-cn/download/confirmation.aspx?id=45154" target="_blank" rel="noopener">https://www.microsoft.com/zh-cn/download/confirmation.aspx?id=45154</a></p>
 <p>之后若浏览器报Array.includes()等等一系列es6语法的错误,说明是兼容的问题,请继续往下阅读</p>
-<h4>解决es6语法和api兼容</h4>
+<h4 id="jie-jue-es-6-yu-fa-he-api-jian-rong"><a class="header-anchor" href="#解决es6语法和api兼容">¶</a>解决es6语法和api兼容</h4>
 <blockquote>
 <p>参考尤大的解答 <a href="https://github.com/vuejs-templates/webpack/issues/260" target="_blank" rel="noopener">https://github.com/vuejs-templates/webpack/issues/260</a></p>
 </blockquote>
 <p>首先</p>
-<p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install --save babel-polyfill</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install --save babel-polyfill</span><br></pre></td></tr></table></figure>
 <p>然后在main.js中的最前面引入babel-polyfill</p>
-<p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="string">'babel-polyfill'</span></span><br></pre></td></tr></table></figure></p>
-<p>在index.html 加入以下代码（非必须）
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">"X-UA-Compatible"</span> <span class="attr">content</span>=<span class="string">"IE=edge,chrome=1"</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
-<p>在config中的webpack.base.conf.js中,修改编译配置
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">entry:&#123;</span><br><span class="line">    app:[<span class="string">'babel-polyfill'</span>,<span class="string">'./src/main.js'</span>]      </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h4>对于promise的兼容</h4>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="string">'babel-polyfill'</span></span><br></pre></td></tr></table></figure>
+<p>在index.html 加入以下代码（非必须）</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">"X-UA-Compatible"</span> <span class="attr">content</span>=<span class="string">"IE=edge,chrome=1"</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>在config中的webpack.base.conf.js中,修改编译配置</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">entry:&#123;</span><br><span class="line">    app:[<span class="string">'babel-polyfill'</span>,<span class="string">'./src/main.js'</span>]      </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="dui-yu-promise-de-jian-rong"><a class="header-anchor" href="#对于promise的兼容">¶</a>对于promise的兼容</h4>
 <p>如果你只用到了 axios 对 promise进行兼容，可以只用 es6-promise</p>
-<p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install es6-promise --save</span><br></pre></td></tr></table></figure></p>
-<p>在 main.js 中的最前面 引入
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="string">'es6-promise/auto'</span></span><br></pre></td></tr></table></figure></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install es6-promise --save</span><br></pre></td></tr></table></figure>
+<p>在 main.js 中的最前面 引入</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="string">'es6-promise/auto'</span></span><br></pre></td></tr></table></figure>
 <p>完成以上配置，ie9兼容就完成了</p>
 <p>如果你有测试服的话,以下步骤你可以省略</p>
-<h4>build之后的dist文件只有放在服务器上才能查看，但本地如何查看呢，参考以下配置</h4>
-<p>修改config文件夹中的index.js文件,将build对象中的打包路径，'/‘改为'./'，由绝对路径改为相对路径,建议将sourceMap改为false,编译的时候会快一点</p>
-<p>build: { assetsPublicPath: './', productionSourceMap: false, },</p>
+<h4 id="build-zhi-hou-de-dist-wen-jian-zhi-you-fang-zai-fu-wu-qi-shang-cai-neng-cha-kan-dan-ben-di-ru-he-cha-kan-ni-can-kao-yi-xia-pei-zhi"><a class="header-anchor" href="#build之后的dist文件只有放在服务器上才能查看-但本地如何查看呢-参考以下配置">¶</a>build之后的dist文件只有放在服务器上才能查看，但本地如何查看呢，参考以下配置</h4>
+<p>修改config文件夹中的index.js文件,将build对象中的打包路径，’/‘改为’./’，由绝对路径改为相对路径,建议将sourceMap改为false,编译的时候会快一点</p>
+<p>build: { assetsPublicPath: ‘./’, productionSourceMap: false, },</p>
 <p>修改完之后，重新 <code>npm run build</code> ，得到新的dist文件夹</p>
 <p>然后进入dist文件夹<code>cd dist</code></p>
 <p>全局安装简易node服务器</p>
-<p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install http-server -g</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install http-server -g</span><br></pre></td></tr></table></figure>
 <p>启动简易node服务器<code>http-server</code></p>
 
       
@@ -455,6 +465,9 @@
           
 
   
+    <div class="comments" id="comments">
+    </div>
+  
 
 
 
@@ -502,7 +515,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-count">12</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -524,7 +537,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-count">9</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -534,6 +547,22 @@
 
           
 
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/P3T3R-Z/" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i></a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:1611216092@qq.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i></a>
+                  </span>
+                
+            </div>
           
 
           
@@ -557,7 +586,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">ie9以上的调试</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text">解决es6语法和api兼容</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">3.</span> <span class="nav-text">对于promise的兼容</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">4.</span> <span class="nav-text">build之后的dist文件只有放在服务器上才能查看，但本地如何查看呢，参考以下配置</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#ie-9-yi-shang-de-diao-shi"><span class="nav-text">¶ie9以上的调试</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#jie-jue-es-6-yu-fa-he-api-jian-rong"><span class="nav-text">¶解决es6语法和api兼容</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#dui-yu-promise-de-jian-rong"><span class="nav-text">¶对于promise的兼容</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#build-zhi-hou-de-dist-wen-jian-zhi-you-fang-zai-fu-wu-qi-shang-cai-neng-cha-kan-dan-ben-di-ru-he-cha-kan-ni-can-kao-yi-xia-pei-zhi"><span class="nav-text">¶build之后的dist文件只有放在服务器上才能查看，但本地如何查看呢，参考以下配置</span></a></li></ol></div>
             
 
           </div>
@@ -689,6 +718,13 @@
   
   
 
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
   
   <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
 <script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
@@ -732,6 +768,28 @@
 
 
 
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'xbiDhpPJfUh2YRD8uhN8fFXl-gzGzoHsz',
+        appKey: '9Aqg2Qbrk8tckTNeMgcGkUgF',
+        placeholder: 'Just go go',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
 
 
 

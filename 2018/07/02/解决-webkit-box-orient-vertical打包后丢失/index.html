@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next mist use-motion" lang="zh-Hans">
+<html class="theme-next gemini use-motion" lang="zh-Hans">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="问题描述 多行文本显示,超出部分省略结尾的这个样式中,有用到-webkit-box-orient,打包后尽然丢失了,打包前样式如下 1234567891011.text&amp;#123;    display: -webkit-box;    height: 2.6rem;    line-height: 1.3rem;    color: #333;    width: 100%;    overfl">
+<meta name="description" content="¶问题描述 多行文本显示,超出部分省略结尾的这个样式中,有用到-webkit-box-orient,打包后尽然丢失了,打包前样式如下 1234567891011.text&amp;#123;    display: -webkit-box;    height: 2.6rem;    line-height: 1.3rem;    color: #333;    width: 100%;    overf">
 <meta name="keywords" content="vue2.x,webpack">
 <meta property="og:type" content="article">
 <meta property="og:title" content="解决-webkit-box-orient:vertical打包后的丢失">
 <meta property="og:url" content="https://blog.peterzhu.club/2018/07/02/解决-webkit-box-orient-vertical打包后丢失/index.html">
 <meta property="og:site_name" content="P3T3R的编程随笔">
-<meta property="og:description" content="问题描述 多行文本显示,超出部分省略结尾的这个样式中,有用到-webkit-box-orient,打包后尽然丢失了,打包前样式如下 1234567891011.text&amp;#123;    display: -webkit-box;    height: 2.6rem;    line-height: 1.3rem;    color: #333;    width: 100%;    overfl">
+<meta property="og:description" content="¶问题描述 多行文本显示,超出部分省略结尾的这个样式中,有用到-webkit-box-orient,打包后尽然丢失了,打包前样式如下 1234567891011.text&amp;#123;    display: -webkit-box;    height: 2.6rem;    line-height: 1.3rem;    color: #333;    width: 100%;    overf">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2018-10-19T08:19:59.037Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="解决-webkit-box-orient:vertical打包后的丢失">
-<meta name="twitter:description" content="问题描述 多行文本显示,超出部分省略结尾的这个样式中,有用到-webkit-box-orient,打包后尽然丢失了,打包前样式如下 1234567891011.text&amp;#123;    display: -webkit-box;    height: 2.6rem;    line-height: 1.3rem;    color: #333;    width: 100%;    overfl">
+<meta name="twitter:description" content="¶问题描述 多行文本显示,超出部分省略结尾的这个样式中,有用到-webkit-box-orient,打包后尽然丢失了,打包前样式如下 1234567891011.text&amp;#123;    display: -webkit-box;    height: 2.6rem;    line-height: 1.3rem;    color: #333;    width: 100%;    overf">
 
 
 
@@ -98,7 +98,7 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Mist',
+    scheme: 'Gemini',
     version: '5.1.4',
     sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
@@ -328,6 +328,16 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/07/02/解决-webkit-box-orient-vertical打包后丢失/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/07/02/解决-webkit-box-orient-vertical打包后丢失/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -352,16 +362,16 @@
       
 
       
-        <h4>问题描述</h4>
+        <h4 id="wen-ti-miao-shu"><a class="header-anchor" href="#问题描述">¶</a>问题描述</h4>
 <p>多行文本显示,超出部分省略结尾的这个样式中,有用到<code>-webkit-box-orient</code>,打包后尽然丢失了,打包前样式如下</p>
-<p><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.text</span>&#123;</span><br><span class="line">    <span class="attribute">display</span>: -webkit-box;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">2.6rem</span>;</span><br><span class="line">    <span class="attribute">line-height</span>: <span class="number">1.3rem</span>;</span><br><span class="line">    <span class="attribute">color</span>: <span class="number">#333</span>;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">100%</span>;</span><br><span class="line">    <span class="attribute">overflow</span>: hidden;</span><br><span class="line">    <span class="attribute">text-overflow</span>: ellipsis;</span><br><span class="line">    <span class="attribute">-webkit-box-orient</span>: vertical;</span><br><span class="line">    <span class="attribute">-webkit-line-clamp</span>: <span class="number">2</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h4>原因</h4>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.text</span>&#123;</span><br><span class="line">    <span class="attribute">display</span>: -webkit-box;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">2.6rem</span>;</span><br><span class="line">    <span class="attribute">line-height</span>: <span class="number">1.3rem</span>;</span><br><span class="line">    <span class="attribute">color</span>: <span class="number">#333</span>;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">100%</span>;</span><br><span class="line">    <span class="attribute">overflow</span>: hidden;</span><br><span class="line">    <span class="attribute">text-overflow</span>: ellipsis;</span><br><span class="line">    <span class="attribute">-webkit-box-orient</span>: vertical;</span><br><span class="line">    <span class="attribute">-webkit-line-clamp</span>: <span class="number">2</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="yuan-yin"><a class="header-anchor" href="#原因">¶</a>原因</h4>
 <p>所用的脚手架中autoprefixer自动移除老式过时的代码</p>
-<h4>如何解决</h4>
-<p>方法1. 添加注释关闭autoprefixer
-如下
-<figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*! autoprefixer: off */</span></span><br><span class="line"> -webkit-<span class="keyword">box-orient: </span>vertical<span class="comment">;</span></span><br><span class="line"><span class="comment">/* autoprefixer: on */</span></span><br></pre></td></tr></table></figure></p>
-<p>方法2. 将autoprefixer配置改为false
+<h4 id="ru-he-jie-jue"><a class="header-anchor" href="#如何解决">¶</a>如何解决</h4>
+<p>方法1. 添加注释关闭autoprefixer<br>
+如下</p>
+<figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*! autoprefixer: off */</span></span><br><span class="line"> -webkit-<span class="keyword">box-orient: </span>vertical<span class="comment">;</span></span><br><span class="line"><span class="comment">/* autoprefixer: on */</span></span><br></pre></td></tr></table></figure>
+<p>方法2. 将autoprefixer配置改为false<br>
 我所用的是Vue2.x脚手架,在<code>build</code>中找到<code>webpack.prod.conf.js</code>配置,更改的配置如下</p>
 <pre><code><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">plugins: [</span><br><span class="line">	...</span><br><span class="line">	<span class="keyword">new</span> OptimizeCSSPlugin(&#123;</span><br><span class="line">      cssProcessorOptions: config.build.productionSourceMap</span><br><span class="line">        ? &#123; <span class="attr">safe</span>: <span class="literal">true</span>, <span class="attr">map</span>: &#123; <span class="attr">inline</span>: <span class="literal">false</span> &#125;, <span class="attr">autoprefixer</span>: &#123; <span class="attr">remove</span>: <span class="literal">false</span> &#125; &#125;</span><br><span class="line">        : &#123; <span class="attr">safe</span>: <span class="literal">true</span> &#125;</span><br><span class="line">    &#125;),</span><br><span class="line">	...</span><br><span class="line">]</span><br></pre></td></tr></table></figure></code></pre>
 
@@ -438,6 +448,9 @@
           
 
   
+    <div class="comments" id="comments">
+    </div>
+  
 
 
 
@@ -485,7 +498,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-count">12</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -507,7 +520,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-count">9</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -517,6 +530,22 @@
 
           
 
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/P3T3R-Z/" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i></a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:1611216092@qq.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i></a>
+                  </span>
+                
+            </div>
           
 
           
@@ -540,7 +569,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">问题描述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text">原因</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">3.</span> <span class="nav-text">如何解决</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#wen-ti-miao-shu"><span class="nav-text">¶问题描述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#yuan-yin"><span class="nav-text">¶原因</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ru-he-jie-jue"><span class="nav-text">¶如何解决</span></a></li></ol></div>
             
 
           </div>
@@ -672,6 +701,13 @@
   
   
 
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
   
   <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
 <script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
@@ -715,6 +751,28 @@
 
 
 
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'xbiDhpPJfUh2YRD8uhN8fFXl-gzGzoHsz',
+        appKey: '9Aqg2Qbrk8tckTNeMgcGkUgF',
+        placeholder: 'Just go go',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
 
 
 

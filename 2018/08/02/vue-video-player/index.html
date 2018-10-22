@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next mist use-motion" lang="zh-Hans">
+<html class="theme-next gemini use-motion" lang="zh-Hans">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="开发遇到视频音频播放的需求,首先想到的是常用的videojs、audiojs这俩插件,但是在做vue开发肯定得换个思路,于是在github上找到了star较多的vue-video-player。  安装 npm方式 1npm install vue-video-player --save 引入和挂载 12345678import &apos;video.js/dist/video-js.css&apos;impor">
+<meta name="description" content="开发遇到视频音频播放的需求,首先想到的是常用的videojs、audiojs这俩插件,但是在做vue开发肯定得换个思路,于是在github上找到了star较多的vue-video-player。  ¶安装 npm方式 1npm install vue-video-player --save ¶引入和挂载 12345678import &apos;video.js/dist/video-js.css&apos;imp">
 <meta name="keywords" content="vue插件">
 <meta property="og:type" content="article">
 <meta property="og:title" content="vue-video-player 插件使用">
 <meta property="og:url" content="https://blog.peterzhu.club/2018/08/02/vue-video-player/index.html">
 <meta property="og:site_name" content="P3T3R的编程随笔">
-<meta property="og:description" content="开发遇到视频音频播放的需求,首先想到的是常用的videojs、audiojs这俩插件,但是在做vue开发肯定得换个思路,于是在github上找到了star较多的vue-video-player。  安装 npm方式 1npm install vue-video-player --save 引入和挂载 12345678import &apos;video.js/dist/video-js.css&apos;impor">
+<meta property="og:description" content="开发遇到视频音频播放的需求,首先想到的是常用的videojs、audiojs这俩插件,但是在做vue开发肯定得换个思路,于是在github上找到了star较多的vue-video-player。  ¶安装 npm方式 1npm install vue-video-player --save ¶引入和挂载 12345678import &apos;video.js/dist/video-js.css&apos;imp">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2018-10-19T08:20:14.109Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="vue-video-player 插件使用">
-<meta name="twitter:description" content="开发遇到视频音频播放的需求,首先想到的是常用的videojs、audiojs这俩插件,但是在做vue开发肯定得换个思路,于是在github上找到了star较多的vue-video-player。  安装 npm方式 1npm install vue-video-player --save 引入和挂载 12345678import &apos;video.js/dist/video-js.css&apos;impor">
+<meta name="twitter:description" content="开发遇到视频音频播放的需求,首先想到的是常用的videojs、audiojs这俩插件,但是在做vue开发肯定得换个思路,于是在github上找到了star较多的vue-video-player。  ¶安装 npm方式 1npm install vue-video-player --save ¶引入和挂载 12345678import &apos;video.js/dist/video-js.css&apos;imp">
 
 
 
@@ -98,7 +98,7 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Mist',
+    scheme: 'Gemini',
     version: '5.1.4',
     sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
@@ -328,6 +328,16 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/08/02/vue-video-player/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/08/02/vue-video-player/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -355,22 +365,20 @@
         <blockquote>
 <p>开发遇到视频音频播放的需求,首先想到的是常用的videojs、audiojs这俩插件,但是在做vue开发肯定得换个思路,于是在github上找到了star较多的<code>vue-video-player</code>。</p>
 </blockquote>
-<h4>安装</h4>
-<p>npm方式
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm <span class="keyword">install</span> vue-video-player <span class="comment">--save</span></span><br></pre></td></tr></table></figure></p>
-<h4>引入和挂载</h4>
-<p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="string">'video.js/dist/video-js.css'</span></span><br><span class="line"><span class="keyword">import</span> &#123; videoPlayer &#125; <span class="keyword">from</span> <span class="string">'vue-video-player'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">  components: &#123;</span><br><span class="line">    videoPlayer</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h4>编写使用</h4>
+<h4 id="an-zhuang"><a class="header-anchor" href="#安装">¶</a>安装</h4>
+<p>npm方式</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm <span class="keyword">install</span> vue-video-player <span class="comment">--save</span></span><br></pre></td></tr></table></figure>
+<h4 id="yin-ru-he-gua-zai"><a class="header-anchor" href="#引入和挂载">¶</a>引入和挂载</h4>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="string">'video.js/dist/video-js.css'</span></span><br><span class="line"><span class="keyword">import</span> &#123; videoPlayer &#125; <span class="keyword">from</span> <span class="string">'vue-video-player'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">  components: &#123;</span><br><span class="line">    videoPlayer</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="bian-xie-shi-yong"><a class="header-anchor" href="#编写使用">¶</a>编写使用</h4>
 <p>编写vue组件</p>
-<p><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"container"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"player"</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">video-player</span>  <span class="attr">class</span>=<span class="string">"video-player"</span></span></span><br><span class="line"><span class="tag">                     <span class="attr">ref</span>=<span class="string">"videoPlayer"</span></span></span><br><span class="line"><span class="tag">                     <span class="attr">:playsinline</span>=<span class="string">"true"</span></span></span><br><span class="line"><span class="tag">                     <span class="attr">:options</span>=<span class="string">"playerOptions"</span></span></span><br><span class="line"><span class="tag"></span></span><br><span class="line"><span class="tag">                     @<span class="attr">play</span>=<span class="string">"onPlayerPlay($event)"</span></span></span><br><span class="line"><span class="tag">                     @<span class="attr">pause</span>=<span class="string">"onPlayerPause($event)"</span></span></span><br><span class="line"><span class="tag">      &gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">video-player</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line"> </span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript"><span class="keyword">import</span> &#123; videoPlayer &#125; <span class="keyword">from</span> <span class="string">'vue-video-player'</span>;</span></span><br><span class="line"><span class="javascript"><span class="keyword">import</span> <span class="string">'@/assets/vue-video/custom-video.css'</span></span></span><br><span class="line"><span class="javascript"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span></span><br><span class="line"><span class="undefined">  data () &#123;</span></span><br><span class="line"><span class="actionscript">    <span class="keyword">return</span> &#123;</span></span><br><span class="line"><span class="undefined">      playerOptions: &#123;</span></span><br><span class="line"><span class="actionscript">        playbackRates: [<span class="number">0.7</span>, <span class="number">1.0</span>, <span class="number">1.5</span>, <span class="number">2.0</span>], <span class="comment">//播放速度选择</span></span></span><br><span class="line"><span class="actionscript">        autoplay: <span class="literal">false</span>, <span class="comment">//如果true,浏览器准备好时开始回放。</span></span></span><br><span class="line"><span class="actionscript">        muted: <span class="literal">false</span>, <span class="comment">// 默认情况下将会消除任何音频。</span></span></span><br><span class="line"><span class="actionscript">        fluid: <span class="literal">true</span>, <span class="comment">// 当true时，将按比例缩放以适应其容器。</span></span></span><br><span class="line"><span class="actionscript">        loop: <span class="literal">false</span>, <span class="comment">// 导致视频一结束就重新开始。</span></span></span><br><span class="line"><span class="actionscript">        preload: <span class="string">'auto'</span>, <span class="comment">// 建议浏览器在&lt;video&gt;加载元素后是否应该开始下载视频数据。auto浏览器选择最佳行为,立即开始加载视频（如果浏览器支持）</span></span></span><br><span class="line"><span class="actionscript">        language: <span class="string">'zh-CN'</span>,</span></span><br><span class="line"><span class="actionscript">        aspectRatio: <span class="string">'16:9'</span>, <span class="comment">// 将播放器置于流畅模式，并在计算播放器的动态大小时使用该值。值应该代表一个比例 - 用冒号分隔的两个数字（例如"16:9"或"4:3"）</span></span></span><br><span class="line"><span class="undefined">        sources: [&#123;</span></span><br><span class="line"><span class="actionscript">          type: <span class="string">"video/mp4"</span>, <span class="comment">//格式</span></span></span><br><span class="line"><span class="actionscript">          src: <span class="string">"http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4"</span> <span class="comment">//视频地址（必填）</span></span></span><br><span class="line"><span class="undefined">        &#125;],</span></span><br><span class="line"><span class="actionscript">        poster: <span class="string">"poster.jpg"</span>, <span class="comment">//你的封面地址</span></span></span><br><span class="line"><span class="actionscript">        notSupportedMessage: <span class="string">'此视频暂无法播放，请稍后再试'</span>, <span class="comment">//允许覆盖Video.js无法播放媒体源时显示的默认信息。</span></span></span><br><span class="line"><span class="undefined">        controlBar: &#123; </span></span><br><span class="line"><span class="actionscript">          timeDivider: <span class="literal">true</span>,</span></span><br><span class="line"><span class="actionscript">          durationDisplay: <span class="literal">true</span>,</span></span><br><span class="line"><span class="actionscript">          remainingTimeDisplay: <span class="literal">false</span>,  <span class="comment">//进度展示配置</span></span></span><br><span class="line"><span class="actionscript">          fullscreenToggle: <span class="literal">true</span>  <span class="comment">//全屏按钮</span></span></span><br><span class="line"><span class="undefined">        &#125;</span></span><br><span class="line"><span class="undefined">      &#125;</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="undefined">  &#125;,</span></span><br><span class="line"><span class="undefined">  components: &#123;</span></span><br><span class="line"><span class="undefined">    videoPlayer</span></span><br><span class="line"><span class="undefined">  &#125;,</span></span><br><span class="line"><span class="undefined">  methods: &#123;</span></span><br><span class="line"><span class="actionscript">  	<span class="comment">//播放回调</span></span></span><br><span class="line"><span class="undefined">    onPlayerPlay(player) &#123;</span></span><br><span class="line"><span class="javascript">      <span class="built_in">console</span>.log(<span class="string">"play"</span>);</span></span><br><span class="line"><span class="undefined">    &#125;,</span></span><br><span class="line"><span class="actionscript">    <span class="comment">//暂停回调</span></span></span><br><span class="line"><span class="undefined">    onPlayerPause(player)&#123;</span></span><br><span class="line"><span class="javascript">      <span class="built_in">console</span>.log(<span class="string">"pause"</span>);</span></span><br><span class="line"><span class="undefined">    &#125;,</span></span><br><span class="line"><span class="undefined">  &#125;,</span></span><br><span class="line"><span class="undefined">  computed: &#123;</span></span><br><span class="line"><span class="undefined">    player() &#123;</span></span><br><span class="line"><span class="actionscript">      <span class="keyword">return</span> <span class="keyword">this</span>.$refs.videoPlayer.player</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="undefined">  &#125;</span></span><br><span class="line"><span class="undefined">&#125;</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">"text/css"</span> <span class="attr">scoped</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="css">  <span class="selector-class">.container</span> &#123;</span></span><br><span class="line"><span class="css">    <span class="selector-tag">background-color</span>: <span class="selector-id">#efefef</span>;</span></span><br><span class="line"><span class="undefined">    min-height: 100%;</span></span><br><span class="line"><span class="undefined">  &#125;</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"container"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"player"</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">video-player</span>  <span class="attr">class</span>=<span class="string">"video-player"</span></span></span><br><span class="line"><span class="tag">                     <span class="attr">ref</span>=<span class="string">"videoPlayer"</span></span></span><br><span class="line"><span class="tag">                     <span class="attr">:playsinline</span>=<span class="string">"true"</span></span></span><br><span class="line"><span class="tag">                     <span class="attr">:options</span>=<span class="string">"playerOptions"</span></span></span><br><span class="line"><span class="tag"></span></span><br><span class="line"><span class="tag">                     @<span class="attr">play</span>=<span class="string">"onPlayerPlay($event)"</span></span></span><br><span class="line"><span class="tag">                     @<span class="attr">pause</span>=<span class="string">"onPlayerPause($event)"</span></span></span><br><span class="line"><span class="tag">      &gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">video-player</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line"> </span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript"><span class="keyword">import</span> &#123; videoPlayer &#125; <span class="keyword">from</span> <span class="string">'vue-video-player'</span>;</span></span><br><span class="line"><span class="javascript"><span class="keyword">import</span> <span class="string">'@/assets/vue-video/custom-video.css'</span></span></span><br><span class="line"><span class="javascript"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span></span><br><span class="line"><span class="undefined">  data () &#123;</span></span><br><span class="line"><span class="actionscript">    <span class="keyword">return</span> &#123;</span></span><br><span class="line"><span class="undefined">      playerOptions: &#123;</span></span><br><span class="line"><span class="actionscript">        playbackRates: [<span class="number">0.7</span>, <span class="number">1.0</span>, <span class="number">1.5</span>, <span class="number">2.0</span>], <span class="comment">//播放速度选择</span></span></span><br><span class="line"><span class="actionscript">        autoplay: <span class="literal">false</span>, <span class="comment">//如果true,浏览器准备好时开始回放。</span></span></span><br><span class="line"><span class="actionscript">        muted: <span class="literal">false</span>, <span class="comment">// 默认情况下将会消除任何音频。</span></span></span><br><span class="line"><span class="actionscript">        fluid: <span class="literal">true</span>, <span class="comment">// 当true时，将按比例缩放以适应其容器。</span></span></span><br><span class="line"><span class="actionscript">        loop: <span class="literal">false</span>, <span class="comment">// 导致视频一结束就重新开始。</span></span></span><br><span class="line"><span class="actionscript">        preload: <span class="string">'auto'</span>, <span class="comment">// 建议浏览器在&lt;video&gt;加载元素后是否应该开始下载视频数据。auto浏览器选择最佳行为,立即开始加载视频（如果浏览器支持）</span></span></span><br><span class="line"><span class="actionscript">        language: <span class="string">'zh-CN'</span>,</span></span><br><span class="line"><span class="actionscript">        aspectRatio: <span class="string">'16:9'</span>, <span class="comment">// 将播放器置于流畅模式，并在计算播放器的动态大小时使用该值。值应该代表一个比例 - 用冒号分隔的两个数字（例如"16:9"或"4:3"）</span></span></span><br><span class="line"><span class="undefined">        sources: [&#123;</span></span><br><span class="line"><span class="actionscript">          type: <span class="string">"video/mp4"</span>, <span class="comment">//格式</span></span></span><br><span class="line"><span class="actionscript">          src: <span class="string">"http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4"</span> <span class="comment">//视频地址（必填）</span></span></span><br><span class="line"><span class="undefined">        &#125;],</span></span><br><span class="line"><span class="actionscript">        poster: <span class="string">"poster.jpg"</span>, <span class="comment">//你的封面地址</span></span></span><br><span class="line"><span class="actionscript">        notSupportedMessage: <span class="string">'此视频暂无法播放，请稍后再试'</span>, <span class="comment">//允许覆盖Video.js无法播放媒体源时显示的默认信息。</span></span></span><br><span class="line"><span class="undefined">        controlBar: &#123; </span></span><br><span class="line"><span class="actionscript">          timeDivider: <span class="literal">true</span>,</span></span><br><span class="line"><span class="actionscript">          durationDisplay: <span class="literal">true</span>,</span></span><br><span class="line"><span class="actionscript">          remainingTimeDisplay: <span class="literal">false</span>,  <span class="comment">//进度展示配置</span></span></span><br><span class="line"><span class="actionscript">          fullscreenToggle: <span class="literal">true</span>  <span class="comment">//全屏按钮</span></span></span><br><span class="line"><span class="undefined">        &#125;</span></span><br><span class="line"><span class="undefined">      &#125;</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="undefined">  &#125;,</span></span><br><span class="line"><span class="undefined">  components: &#123;</span></span><br><span class="line"><span class="undefined">    videoPlayer</span></span><br><span class="line"><span class="undefined">  &#125;,</span></span><br><span class="line"><span class="undefined">  methods: &#123;</span></span><br><span class="line"><span class="actionscript">  	<span class="comment">//播放回调</span></span></span><br><span class="line"><span class="undefined">    onPlayerPlay(player) &#123;</span></span><br><span class="line"><span class="javascript">      <span class="built_in">console</span>.log(<span class="string">"play"</span>);</span></span><br><span class="line"><span class="undefined">    &#125;,</span></span><br><span class="line"><span class="actionscript">    <span class="comment">//暂停回调</span></span></span><br><span class="line"><span class="undefined">    onPlayerPause(player)&#123;</span></span><br><span class="line"><span class="javascript">      <span class="built_in">console</span>.log(<span class="string">"pause"</span>);</span></span><br><span class="line"><span class="undefined">    &#125;,</span></span><br><span class="line"><span class="undefined">  &#125;,</span></span><br><span class="line"><span class="undefined">  computed: &#123;</span></span><br><span class="line"><span class="undefined">    player() &#123;</span></span><br><span class="line"><span class="actionscript">      <span class="keyword">return</span> <span class="keyword">this</span>.$refs.videoPlayer.player</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="undefined">  &#125;</span></span><br><span class="line"><span class="undefined">&#125;</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">"text/css"</span> <span class="attr">scoped</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="css">  <span class="selector-class">.container</span> &#123;</span></span><br><span class="line"><span class="css">    <span class="selector-tag">background-color</span>: <span class="selector-id">#efefef</span>;</span></span><br><span class="line"><span class="undefined">    min-height: 100%;</span></span><br><span class="line"><span class="undefined">  &#125;</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <p>如果想自定义样式,不论style标签有没有增加scoped属性，写入style中都是无用的,这取决于vue加载样式的顺序,所以必须单独写样式文件,写在<code>import 'video.js/dist/video-js.css'</code>之后export default之前, 或者require样式在main.js中</p>
-<h4>音频播放</h4>
+<h4 id="yin-pin-bo-fang"><a class="header-anchor" href="#音频播放">¶</a>音频播放</h4>
 <p>这只是一个偷懒的方法, 如下</p>
-<p><figure class="highlight dts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">sources:</span> [&#123;</span><br><span class="line"><span class="symbol">     type:</span> <span class="string">"audio/mp3"</span>, <span class="comment">//格式</span></span><br><span class="line"><span class="symbol">     src:</span> <span class="string">"http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp3"</span> <span class="comment">// 音频地址（必填）</span></span><br><span class="line">   &#125;],</span><br></pre></td></tr></table></figure></p>
-<p>&lt;br&gt;</p>
-<blockquote>
-<p>更多解读 <a href="https://github.com/surmon-china/vue-video-player.git" target="_blank" rel="noopener">vue-video-player</a></p>
-</blockquote>
+<figure class="highlight dts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">sources:</span> [&#123;</span><br><span class="line"><span class="symbol">     type:</span> <span class="string">"audio/mp3"</span>, <span class="comment">//格式</span></span><br><span class="line"><span class="symbol">     src:</span> <span class="string">"http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp3"</span> <span class="comment">// 音频地址（必填）</span></span><br><span class="line">   &#125;],</span><br></pre></td></tr></table></figure>
+<br>
+> 更多解读 [vue-video-player](https://github.com/surmon-china/vue-video-player.git)
 
       
     </div>
@@ -443,6 +451,9 @@
           
 
   
+    <div class="comments" id="comments">
+    </div>
+  
 
 
 
@@ -490,7 +501,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-count">12</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -512,7 +523,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-count">9</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -522,6 +533,22 @@
 
           
 
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/P3T3R-Z/" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i></a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:1611216092@qq.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i></a>
+                  </span>
+                
+            </div>
           
 
           
@@ -545,7 +572,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text">引入和挂载</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">3.</span> <span class="nav-text">编写使用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">4.</span> <span class="nav-text">音频播放</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#an-zhuang"><span class="nav-text">¶安装</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#yin-ru-he-gua-zai"><span class="nav-text">¶引入和挂载</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#bian-xie-shi-yong"><span class="nav-text">¶编写使用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#yin-pin-bo-fang"><span class="nav-text">¶音频播放</span></a></li></ol></div>
             
 
           </div>
@@ -677,6 +704,13 @@
   
   
 
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
   
   <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
 <script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
@@ -720,6 +754,28 @@
 
 
 
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'xbiDhpPJfUh2YRD8uhN8fFXl-gzGzoHsz',
+        appKey: '9Aqg2Qbrk8tckTNeMgcGkUgF',
+        placeholder: 'Just go go',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
 
 
 
