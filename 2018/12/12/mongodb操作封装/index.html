@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="P3T3R的编程随笔">
 <meta property="og:description" content="¶前言 接着之前的express+mongodb+ejs练习(一)这篇文章,本文主要讲的是nodejs对mongodb的增删改查封装  前置条件: 已经安装mongodb并配置环境, 已开启mongo服务, 安装并挂载mongodb插件  ¶思路 单独写一个操作mongoDB的模块,首先编写连接mongoDB的公共函数, 连接函数返回的client传入连接函数的回调, 增删改查这四种操作中调用连接">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-12-12T07:38:01.787Z">
+<meta property="og:updated_time" content="2018-12-12T07:42:53.825Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="nodejs----mongoDB操作封装使用">
 <meta name="twitter:description" content="¶前言 接着之前的express+mongodb+ejs练习(一)这篇文章,本文主要讲的是nodejs对mongodb的增删改查封装  前置条件: 已经安装mongodb并配置环境, 已开启mongo服务, 安装并挂载mongodb插件  ¶思路 单独写一个操作mongoDB的模块,首先编写连接mongoDB的公共函数, 连接函数返回的client传入连接函数的回调, 增删改查这四种操作中调用连接">
@@ -397,7 +397,6 @@ array为多条</p>
 <blockquote>
 <p>以上操作基于mongodb3.x版本, 增删改查或许和其他版本有些出入</p>
 </blockquote>
-<h4 id="a-href-https-github-com-p-3-t-3-r-z-learning-and-review-git-yuan-ma-di-zhi-a"><a class="header-anchor" href="#源码地址">¶</a><a href="https://github.com/P3T3R-Z/Learning-and-review.git" target="_blank" rel="noopener">源码地址</a></h4>
 
       
     </div>
@@ -601,7 +600,7 @@ array为多条</p>
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#qian-yan"><span class="nav-text">¶前言</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#si-lu"><span class="nav-text">¶思路</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#feng-zhuang"><span class="nav-text">¶封装</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-bian-xie-lian-jie-mongo-db-de-gong-gong-han-shu"><span class="nav-text">¶1.编写连接mongoDB的公共函数</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-cha-xun"><span class="nav-text">¶2.查寻</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-cha-ru"><span class="nav-text">¶3.插入</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-geng-xin"><span class="nav-text">¶4.更新</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#5-shan-chu"><span class="nav-text">¶5.删除</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#a-href-https-github-com-p-3-t-3-r-z-learning-and-review-git-yuan-ma-di-zhi-a"><span class="nav-text">¶源码地址</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#qian-yan"><span class="nav-text">¶前言</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#si-lu"><span class="nav-text">¶思路</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#feng-zhuang"><span class="nav-text">¶封装</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-bian-xie-lian-jie-mongo-db-de-gong-gong-han-shu"><span class="nav-text">¶1.编写连接mongoDB的公共函数</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-cha-xun"><span class="nav-text">¶2.查寻</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-cha-ru"><span class="nav-text">¶3.插入</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-geng-xin"><span class="nav-text">¶4.更新</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#5-shan-chu"><span class="nav-text">¶5.删除</span></a></li></ol></li></ol></div>
             
 
           </div>

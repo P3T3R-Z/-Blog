@@ -90,7 +90,7 @@
 <meta property="og:image" content="https://blog.peterzhu.club/2018/09/19/常用sort打乱数组真的有用/%E5%B8%B8%E7%94%A8sort%E6%89%93%E4%B9%B1%E6%95%B0%E7%BB%84%E7%9C%9F%E7%9A%84%E6%9C%89%E7%94%A8/1.png">
 <meta property="og:image" content="https://blog.peterzhu.club/2018/09/19/常用sort打乱数组真的有用/%E5%B8%B8%E7%94%A8sort%E6%89%93%E4%B9%B1%E6%95%B0%E7%BB%84%E7%9C%9F%E7%9A%84%E6%9C%89%E7%94%A8/2.png">
 <meta property="og:image" content="https://blog.peterzhu.club/2018/09/19/常用sort打乱数组真的有用/%E5%B8%B8%E7%94%A8sort%E6%89%93%E4%B9%B1%E6%95%B0%E7%BB%84%E7%9C%9F%E7%9A%84%E6%9C%89%E7%94%A8/3.png">
-<meta property="og:updated_time" content="2018-10-19T08:20:03.917Z">
+<meta property="og:updated_time" content="2018-12-12T07:47:00.019Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="常用sort打乱数组真的有用?">
 <meta name="twitter:description" content="JavaScript 开发中有时会遇到要将一个数组随机排序（shuffle）的需求，一个常见的写法是这样： 12345function shuffle(arr) &amp;#123;   arr.sort(function () &amp;#123;      return Math.random() - 0.5;   &amp;#125;);&amp;#125; 或者使用更简洁的 ES6 的写法： 123function sh">
@@ -423,6 +423,7 @@
 <h4 id="xiao-jie"><a class="header-anchor" href="#小结">¶</a>小结</h4>
 <p>如果要将数组随机排序，千万不要再用(a, b) =&gt; Math.random() - 0.5这样的方法。<br>
 目前而言，Fisher–Yates shuffle 算法应该是最好的选择。</p>
+<p>本文转载于<a href="https://www.cnblogs.com/macq/p/6650586.html" target="_blank" rel="noopener">M.C.Q的博客</a></p>
 
       
     </div>
