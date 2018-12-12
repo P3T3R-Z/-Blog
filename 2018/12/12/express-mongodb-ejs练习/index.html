@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="P3T3R的编程随笔">
 <meta property="og:description" content="¶1.前言 本文是刨去express的基本使用,对于express框架下重要部分的学习记录 涉及到的知识点主要以下几点:  express路由封装使用 请求传值获取 session/cookie使用 ejs模板使用 mongoDB操作封装使用  ¶2.express路由封装使用 将项目中的各路由中间件拆分各自作用的模块,各模块中使用express路由并实例化,实例化后的对象上使用中间件, 最后通过">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-12-12T07:42:49.025Z">
+<meta property="og:updated_time" content="2018-12-12T08:14:55.196Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="express+mongodb+ejs练习(一)">
 <meta name="twitter:description" content="¶1.前言 本文是刨去express的基本使用,对于express框架下重要部分的学习记录 涉及到的知识点主要以下几点:  express路由封装使用 请求传值获取 session/cookie使用 ejs模板使用 mongoDB操作封装使用  ¶2.express路由封装使用 将项目中的各路由中间件拆分各自作用的模块,各模块中使用express路由并实例化,实例化后的对象上使用中间件, 最后通过">
@@ -405,6 +405,8 @@
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> userinfo = req.session.userinfo  <span class="comment">//获取session中的userinfo</span></span><br></pre></td></tr></table></figure>
 <p>设置session值</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">req.session.userinfo = <span class="string">'小明'</span></span><br></pre></td></tr></table></figure>
+<p>销毁session</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">req.session.destroy(<span class="function"><span class="keyword">function</span>(<span class="params">err</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(err)&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(err);</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        res.end(<span class="string">'session删除成功'</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">//或者</span></span><br><span class="line">req.session.cookie.maxAge=<span class="number">0</span></span><br></pre></td></tr></table></figure>
 <h5 id="session-de-cun-chu"><a class="header-anchor" href="#session的存储">¶</a>session的存储</h5>
 <p>主要起到负载均衡的目的, 如多个服务器记录单个session的问题.<br>
 基于<code>connect-mongo</code>和<code>express-session</code>插件, 该插件在指定mongodb中新建一个session集合, 用于存储session对象</p>
