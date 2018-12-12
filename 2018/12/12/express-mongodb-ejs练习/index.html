@@ -1,0 +1,865 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="nodejs,express,mongodb," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="¶1.前言 本文是刨去express的基本使用,对于express框架下重要部分的学习记录 涉及到的知识点主要以下几点:  express路由封装使用 请求传值获取 session/cookie使用 ejs模板使用 mongoDB操作封装使用  ¶2.express路由封装使用 将项目中的各路由中间件拆分各自作用的模块,各模块中使用express路由并实例化,实例化后的对象上使用中间件, 最后通过">
+<meta name="keywords" content="nodejs,express,mongodb">
+<meta property="og:type" content="article">
+<meta property="og:title" content="express+mongodb+ejs练习(一)">
+<meta property="og:url" content="https://blog.peterzhu.club/2018/12/12/express-mongodb-ejs练习/index.html">
+<meta property="og:site_name" content="P3T3R的编程随笔">
+<meta property="og:description" content="¶1.前言 本文是刨去express的基本使用,对于express框架下重要部分的学习记录 涉及到的知识点主要以下几点:  express路由封装使用 请求传值获取 session/cookie使用 ejs模板使用 mongoDB操作封装使用  ¶2.express路由封装使用 将项目中的各路由中间件拆分各自作用的模块,各模块中使用express路由并实例化,实例化后的对象上使用中间件, 最后通过">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-12-12T07:39:44.410Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="express+mongodb+ejs练习(一)">
+<meta name="twitter:description" content="¶1.前言 本文是刨去express的基本使用,对于express框架下重要部分的学习记录 涉及到的知识点主要以下几点:  express路由封装使用 请求传值获取 session/cookie使用 ejs模板使用 mongoDB操作封装使用  ¶2.express路由封装使用 将项目中的各路由中间件拆分各自作用的模块,各模块中使用express路由并实例化,实例化后的对象上使用中间件, 最后通过">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://blog.peterzhu.club/2018/12/12/express-mongodb-ejs练习/"/>
+
+
+
+
+
+  <title>express+mongodb+ejs练习(一) | P3T3R的编程随笔</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?ecad572233886b0ee5f773a6cc78dd37";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">P3T3R的编程随笔</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">如有不足,还请高手斧正</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://blog.peterzhu.club/2018/12/12/express-mongodb-ejs练习/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="P3T3R">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="P3T3R的编程随笔">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">express+mongodb+ejs练习(一)</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-12T10:33:46+08:00">
+                2018-12-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Node-js/" itemprop="url" rel="index">
+                    <span itemprop="name">Node.js</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/12/12/express-mongodb-ejs练习/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/12/12/express-mongodb-ejs练习/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h4 id="1-qian-yan"><a class="header-anchor" href="#1-前言">¶</a>1.前言</h4>
+<p>本文是刨去express的基本使用,对于express框架下重要部分的学习记录<br>
+涉及到的知识点主要以下几点:</p>
+<ol>
+<li>express路由封装使用</li>
+<li>请求传值获取</li>
+<li>session/cookie使用</li>
+<li>ejs模板使用</li>
+<li><a href="/2018/12/12/mongodb%E6%93%8D%E4%BD%9C%E5%B0%81%E8%A3%85/">mongoDB操作封装使用</a></li>
+</ol>
+<h4 id="2-express-lu-you-feng-zhuang-shi-yong"><a class="header-anchor" href="#2-express路由封装使用">¶</a>2.express路由封装使用</h4>
+<p>将项目中的各路由中间件拆分各自作用的模块,各模块中使用express路由并实例化,实例化后的对象上使用中间件,<br>
+最后通过<code>commonjs</code>规范<code>module.exports</code>暴露这个实例化对象, 例如:<br>
+登录模块login.js</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> express = <span class="built_in">require</span>(<span class="string">'express'</span>)</span><br><span class="line"><span class="keyword">const</span> router = express.Router()  <span class="comment">//实例化express路由对象</span></span><br><span class="line">router.get(<span class="string">'/login'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">req,res</span>)</span>&#123;</span><br><span class="line">    res.send(<span class="string">'登录页'</span>)</span><br><span class="line">&#125;)</span><br><span class="line">router.get(<span class="string">'/logOut'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">req,res</span>)</span>&#123;</span><br><span class="line">    res.send(<span class="string">'退出页'</span>)</span><br><span class="line">&#125;)</span><br><span class="line">...</span><br><span class="line"><span class="built_in">module</span>.exports = router  <span class="comment">//导出模块</span></span><br></pre></td></tr></table></figure>
+<p>项目主文件app.js中</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> loginmodule = <span class="built_in">require</span>(<span class="string">'./appserver/login/login.js'</span>) <span class="comment">//引入  (相对路径)</span></span><br><span class="line">app.use(<span class="string">'/login'</span>, loginmodule)  <span class="comment">//使用模块 (项目中请求地址为父级加子级,例子中登录也就是'/login/login')</span></span><br></pre></td></tr></table></figure>
+<h4 id="3-qing-qiu-chuan-zhi-huo-qu"><a class="header-anchor" href="#3-请求传值获取">¶</a>3.请求传值获取</h4>
+<h5 id="3-1-pu-tong-de-biao-dan-shu-ju-huo-qu-ji-yu-code-body-parser-code-cha-jian"><a class="header-anchor" href="#3-1普通的表单数据获取-基于body-parser插件">¶</a>3.1普通的表单数据获取, 基于<code>body-parser</code>插件</h5>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//配置`body-parser`</span></span><br><span class="line"><span class="keyword">var</span> bodyParser = <span class="built_in">require</span>(<span class="string">'body-parser'</span>); </span><br><span class="line">router.use(bodyParser.urlencoded(&#123; <span class="attr">extended</span>: <span class="literal">false</span> &#125;))</span><br><span class="line">router.use(bodyParser.json());</span><br></pre></td></tr></table></figure>
+<h5 id="huo-qu-get-chuan-zhi"><a class="header-anchor" href="#获取get传值">¶</a>获取get传值</h5>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">app.get(<span class="string">'/login'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">req, res</span>)</span>&#123;</span><br><span class="line">	<span class="keyword">let</span> getdata = req.query; <span class="comment">//string</span></span><br><span class="line">	<span class="built_in">JSON</span>.stringify(getdata) <span class="comment">//json</span></span><br><span class="line">	&#125;)</span><br></pre></td></tr></table></figure>
+<h5 id="huo-qu-post-chuan-zhi"><a class="header-anchor" href="#获取post传值">¶</a>获取post传值</h5>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">app.post(<span class="string">'/login'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">req, res</span>)</span>&#123;</span><br><span class="line">	<span class="keyword">let</span> getdata = req.body; <span class="comment">//string</span></span><br><span class="line">	&#125;)</span><br></pre></td></tr></table></figure>
+<h5 id="3-2-han-you-tu-pian-wen-jian-liu-de-biao-dan-huo-qu-ji-yu-code-multiparty-code-cha-jian"><a class="header-anchor" href="#3-2含有图片文件流的表单获取-基于multiparty插件">¶</a>3.2含有图片文件流的表单获取, 基于<code>multiparty</code>插件</h5>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> multiparty = <span class="built_in">require</span>(<span class="string">'multiparty'</span>);  <span class="comment">/*获取form表单的数据*/</span></span><br><span class="line">	<span class="comment">/* 使用步骤</span></span><br><span class="line"><span class="comment">	 1.var form = new multiparty.Form();</span></span><br><span class="line"><span class="comment">	 2.form.uploadDir='upload'   上传图片保存的地址</span></span><br><span class="line"><span class="comment">	 3.form.parse(req, function(err, fields, files) &#123;</span></span><br><span class="line"><span class="comment">	      fields ---&gt;获取表单的数据</span></span><br><span class="line"><span class="comment">	      files ---&gt;图片上传成功返回的信息</span></span><br><span class="line"><span class="comment">	 4.html form标签添加 enctype="multipart/form-data" 或js Formdata上传</span></span><br><span class="line"><span class="comment">	*/</span></span><br><span class="line"> &#125;);</span><br></pre></td></tr></table></figure>
+<p>例子:</p>
+ <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"> router.post(<span class="string">'/updategoods'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">req, res</span>)</span>&#123;</span><br><span class="line">	<span class="keyword">var</span> form = <span class="keyword">new</span> multiparty.Form();</span><br><span class="line">    form.uploadDir=<span class="string">'upload'</span>    <span class="comment">//同app.js路径</span></span><br><span class="line">    form.parse(req, <span class="function"><span class="keyword">function</span>(<span class="params">err, fields, files</span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(fields);                    <span class="comment">/*获取表单的数据*/</span></span><br><span class="line">        <span class="built_in">console</span>.log(files);                     <span class="comment">/*图片上传成功返回的信息*/</span></span><br><span class="line"></span><br><span class="line">        ... </span><br><span class="line">    &#125;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h4 id="4-session-cookie-shi-yong"><a class="header-anchor" href="#4-session-cookie使用">¶</a>4.session/cookie使用</h4>
+<h5 id="cookie-she-zhi-shi-yong"><a class="header-anchor" href="#cookie设置使用">¶</a>cookie设置使用</h5>
+<p>基于是<code>cookie-parser</code>插件<br>
+配置</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> cookieParser = <span class="built_in">require</span>(<span class="string">'cookie-parser'</span>);</span><br><span class="line">app.use(cookieParser(<span class="string">'123321'</span>));  <span class="comment">//参数为加密cookie的基础参数</span></span><br></pre></td></tr></table></figure>
+<p>例子</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">app.post(<span class="string">'/dologin'</span>, (req, res)=&gt;&#123;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">/*option参数</span></span><br><span class="line"><span class="comment">	maxAge        过期时间</span></span><br><span class="line"><span class="comment">    domain:'.aaa.com' 多个二级域名共享cookie</span></span><br><span class="line"><span class="comment">    path           表示在哪个路由下面可以访问cookie</span></span><br><span class="line"><span class="comment">    httpOnly:true  表示只有在nodejs服务端可以操作cookie </span></span><br><span class="line"><span class="comment">    signed:true    加密cookie</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">    <span class="comment">//设置cookie</span></span><br><span class="line">	res.cookie(<span class="string">'user'</span>+req.body.username, req.body.password, &#123;<span class="attr">maxAge</span>: <span class="number">60</span>*<span class="number">1000</span>*<span class="number">10</span>, <span class="attr">signed</span>:<span class="literal">true</span>, <span class="attr">httpOnly</span>:<span class="literal">true</span>&#125;)</span><br><span class="line">	<span class="keyword">return</span> res.send(<span class="string">'保存cookie成功'</span>)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h5 id="session-she-zhi-shi-yong"><a class="header-anchor" href="#session设置使用">¶</a>session设置使用</h5>
+<p>基于<code>express-session</code><br>
+配置</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> session = <span class="built_in">require</span>(<span class="string">"express-session"</span>);</span><br><span class="line">app.use(session(&#123;</span><br><span class="line">	secret: <span class="string">'this is string key'</span>,  <span class="comment">//String 类型的字符串，作为服务器端生成 session 的签名</span></span><br><span class="line">	name:<span class="string">'session_id'</span>,            <span class="comment">//保存在本地cookie的一个名字 默认connect.sid  可以不设置</span></span><br><span class="line">	resave: <span class="literal">false</span>,                 <span class="comment">//强制保存 session 即使它并没有变化,默认为 true。建议设置成 false</span></span><br><span class="line">	saveUninitialized: <span class="literal">false</span>,      <span class="comment">//强制将未初始化的 session 存储。  默认值是true  建议设置成true</span></span><br><span class="line">	cookie: &#123; </span><br><span class="line">		maxAge:<span class="number">1000</span>*<span class="number">60</span>*<span class="number">30</span>           <span class="comment">//session过期时间</span></span><br><span class="line">		secure:<span class="literal">true</span>                 <span class="comment">//只有https可以访问session</span></span><br><span class="line">	&#125;,  </span><br><span class="line">	rolling:<span class="literal">true</span>            <span class="comment">//在每次请求时强行设置 cookie，这将重置cookie过期时间（默认：false）</span></span><br><span class="line">&#125;))</span><br></pre></td></tr></table></figure>
+<p>获取session值</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> userinfo = req.session.userinfo  <span class="comment">//获取session中的userinfo</span></span><br></pre></td></tr></table></figure>
+<p>设置session值</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">req.session.userinfo = <span class="string">'小明'</span></span><br></pre></td></tr></table></figure>
+<h5 id="session-de-cun-chu"><a class="header-anchor" href="#session的存储">¶</a>session的存储</h5>
+<p>主要起到负载均衡的目的, 如多个服务器记录单个session的问题.<br>
+基于<code>connect-mongo</code>和<code>express-session</code>插件, 该插件在指定mongodb中新建一个session集合, 用于存储session对象</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> session = <span class="built_in">require</span>(<span class="string">"express-session"</span>);</span><br><span class="line"><span class="keyword">const</span> MongoStore = <span class="built_in">require</span>(<span class="string">"connect-mongo"</span>)(session);</span><br><span class="line">app.use(session(&#123;</span><br><span class="line">	... 同上session配置</span><br><span class="line">	store: <span class="keyword">new</span> MongoStore(&#123;</span><br><span class="line">		url: <span class="string">'mongodb://127.0.0.1:27017/demo'</span>,  <span class="comment">//数据库地址</span></span><br><span class="line">		touchAfter: <span class="number">24</span>*<span class="number">60</span>*<span class="number">60</span>   <span class="comment">//在24小时内只更新一次会话，不管有多少请求(除了在会话数据上更改某些内容的除外)</span></span><br><span class="line">	&#125;)</span><br><span class="line"></span><br><span class="line">&#125;))</span><br></pre></td></tr></table></figure>
+<h4 id="5-ejs-shi-yong"><a class="header-anchor" href="#5-ejs使用">¶</a>5.ejs使用</h4>
+<h5 id="pei-zhi"><a class="header-anchor" href="#配置">¶</a>配置</h5>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> ejs = <span class="built_in">require</span>(<span class="string">'ejs'</span>);</span><br><span class="line">app.set(<span class="string">'view engine'</span>, <span class="string">'ejs'</span>);    <span class="comment">//默认配置</span></span><br><span class="line"><span class="comment">/* 其他配置</span></span><br><span class="line"><span class="comment">app.engine('html', ejs.__express)   //修改ejs模板为html引擎</span></span><br><span class="line"><span class="comment">app.set('view engine', 'html');		//设置渲染html文件  </span></span><br><span class="line"><span class="comment">app.set('views', __dirname+'/render') //设置模板位置 为render目录</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+<h5 id="xuan-ran-mo-ban"><a class="header-anchor" href="#渲染模板">¶</a>渲染模板</h5>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">router.get(<span class="string">'/goods'</span>, (req, res)=&gt;&#123;</span><br><span class="line">	<span class="comment">//模板文件名,  ejs变量</span></span><br><span class="line">	res.render(<span class="string">"goodslist"</span>,&#123;<span class="attr">goods</span>:data&#125;) </span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h5 id="quan-ju-ejs-bian-liang-fu-zhi"><a class="header-anchor" href="#全局ejs变量赋值">¶</a>全局ejs变量赋值</h5>
+<p><code>app.locals['abc'] = 20</code></p>
+<h5 id="qian-duan-shi-yong"><a class="header-anchor" href="#前端使用">¶</a>前端使用</h5>
+<ol>
+<li>输出变量 <code>&lt;%=userInfo.username%&gt;</code></li>
+<li>引用公共 <code>&lt;%- include ./public/footer.html%&gt;</code>  (相对路径)</li>
+<li>逻辑输出</li>
+</ol>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&lt;% for(var i=0;i&lt;goods.length;i++)&#123; %&gt;</span><br><span class="line">	<span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">%</span> <span class="attr">if</span>(<span class="attr">goods</span>[<span class="attr">i</span>]<span class="attr">.pic</span>) &#123; %&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"/&lt;%=goods[i].pic %&gt;"</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">%</span> &#125; <span class="attr">else</span> &#123; %&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"/upload/error.png"</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">%</span> &#125; %&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">%=goods[i].name</span> %&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">%=goods[i].price</span> %&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">%=goods[i].num</span> %&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">td</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">button</span> <span class="attr">class</span>=<span class="string">"update"</span> <span class="attr">data-id</span>=<span class="string">"&lt;%=goods[i]._id %&gt;"</span>&gt;</span>修改<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">button</span> <span class="attr">class</span>=<span class="string">"delete"</span> <span class="attr">data-id</span>=<span class="string">"&lt;%=goods[i]._id %&gt;"</span>&gt;</span>删除<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">%</span> &#125; %&gt;</span></span><br></pre></td></tr></table></figure>
+<h4 id="mongodb-feng-zhuang-shi-yong"><a class="header-anchor" href="#mongodb封装使用">¶</a>mongodb封装使用</h4>
+<p>详见<a href="/2018/12/12/mongodb%E6%93%8D%E4%BD%9C%E5%B0%81%E8%A3%85/">下一篇</a></p>
+<h4 id="a-href-https-github-com-p-3-t-3-r-z-learning-and-review-git-yuan-ma-di-zhi-a"><a class="header-anchor" href="#源码地址">¶</a><a href="https://github.com/P3T3R-Z/Learning-and-review.git" target="_blank" rel="noopener">源码地址</a></h4>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/nodejs/" rel="tag"># nodejs</a>
+          
+            <a href="/tags/express/" rel="tag"># express</a>
+          
+            <a href="/tags/mongodb/" rel="tag"># mongodb</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/10/22/hexo-nexT主题下的设置/" rel="next" title="hexo nexT安装与配置">
+                <i class="fa fa-chevron-left"></i> hexo nexT安装与配置
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/12/12/mongodb操作封装/" rel="prev" title="nodejs----mongoDB操作封装使用">
+                nodejs----mongoDB操作封装使用 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.gif"
+                alt="P3T3R" />
+            
+              <p class="site-author-name" itemprop="name">P3T3R</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/P3T3R-Z/" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i></a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:1611216092@qq.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i></a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="161121602" target="_blank" title="QQ">
+                      
+                        <i class="fa fa-fw fa-161121602"></i></a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-qian-yan"><span class="nav-text">¶1.前言</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-express-lu-you-feng-zhuang-shi-yong"><span class="nav-text">¶2.express路由封装使用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-qing-qiu-chuan-zhi-huo-qu"><span class="nav-text">¶3.请求传值获取</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#3-1-pu-tong-de-biao-dan-shu-ju-huo-qu-ji-yu-code-body-parser-code-cha-jian"><span class="nav-text">¶3.1普通的表单数据获取, 基于body-parser插件</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#huo-qu-get-chuan-zhi"><span class="nav-text">¶获取get传值</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#huo-qu-post-chuan-zhi"><span class="nav-text">¶获取post传值</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-2-han-you-tu-pian-wen-jian-liu-de-biao-dan-huo-qu-ji-yu-code-multiparty-code-cha-jian"><span class="nav-text">¶3.2含有图片文件流的表单获取, 基于multiparty插件</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-session-cookie-shi-yong"><span class="nav-text">¶4.session/cookie使用</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#cookie-she-zhi-shi-yong"><span class="nav-text">¶cookie设置使用</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#session-she-zhi-shi-yong"><span class="nav-text">¶session设置使用</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#session-de-cun-chu"><span class="nav-text">¶session的存储</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-ejs-shi-yong"><span class="nav-text">¶5.ejs使用</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#pei-zhi"><span class="nav-text">¶配置</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#xuan-ran-mo-ban"><span class="nav-text">¶渲染模板</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#quan-ju-ejs-bian-liang-fu-zhi"><span class="nav-text">¶全局ejs变量赋值</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#qian-duan-shi-yong"><span class="nav-text">¶前端使用</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#mongodb-feng-zhuang-shi-yong"><span class="nav-text">¶mongodb封装使用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#a-href-https-github-com-p-3-t-3-r-z-learning-and-review-git-yuan-ma-di-zhi-a"><span class="nav-text">¶源码地址</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">P3T3R</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'xbiDhpPJfUh2YRD8uhN8fFXl-gzGzoHsz',
+        appKey: '9Aqg2Qbrk8tckTNeMgcGkUgF',
+        placeholder: 'Just go go',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
