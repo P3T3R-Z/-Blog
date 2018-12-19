@@ -1,0 +1,837 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="nodejs,gulp," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="以下总结基于gulp@3.9.1,主要记录的几个坑点是,配置es6环境, 自行添加版本号,串并行任务运行,压缩js报错处理等  ¶安装gulp 全局安装gulp命令行:npm i gulp-cli -g 具体项目中:npm i gulp --save-dev ¶压缩js报错处理 unable to minitfy javascript开始误以为是压缩已经压缩版的js报的错,反复尝试后,发现是某个">
+<meta name="keywords" content="nodejs,gulp">
+<meta property="og:type" content="article">
+<meta property="og:title" content="gulp配置总结">
+<meta property="og:url" content="https://blog.peterzhu.club/2018/12/19/gulp配置总结/index.html">
+<meta property="og:site_name" content="P3T3R的编程随笔">
+<meta property="og:description" content="以下总结基于gulp@3.9.1,主要记录的几个坑点是,配置es6环境, 自行添加版本号,串并行任务运行,压缩js报错处理等  ¶安装gulp 全局安装gulp命令行:npm i gulp-cli -g 具体项目中:npm i gulp --save-dev ¶压缩js报错处理 unable to minitfy javascript开始误以为是压缩已经压缩版的js报的错,反复尝试后,发现是某个">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://blog.peterzhu.club/2018/12/19/gulp配置总结/1.png">
+<meta property="og:updated_time" content="2018-12-19T04:25:29.387Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="gulp配置总结">
+<meta name="twitter:description" content="以下总结基于gulp@3.9.1,主要记录的几个坑点是,配置es6环境, 自行添加版本号,串并行任务运行,压缩js报错处理等  ¶安装gulp 全局安装gulp命令行:npm i gulp-cli -g 具体项目中:npm i gulp --save-dev ¶压缩js报错处理 unable to minitfy javascript开始误以为是压缩已经压缩版的js报的错,反复尝试后,发现是某个">
+<meta name="twitter:image" content="https://blog.peterzhu.club/2018/12/19/gulp配置总结/1.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://blog.peterzhu.club/2018/12/19/gulp配置总结/"/>
+
+
+
+
+
+  <title>gulp配置总结 | P3T3R的编程随笔</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?ecad572233886b0ee5f773a6cc78dd37";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">P3T3R的编程随笔</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">如有不足,还请高手斧正</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://blog.peterzhu.club/2018/12/19/gulp配置总结/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="P3T3R">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="P3T3R的编程随笔">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">gulp配置总结</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-19T10:51:27+08:00">
+                2018-12-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/gulp/" itemprop="url" rel="index">
+                    <span itemprop="name">gulp</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/12/19/gulp配置总结/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/12/19/gulp配置总结/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>以下总结基于<code>gulp@3.9.1</code>,主要记录的几个坑点是,配置es6环境, 自行添加版本号,串并行任务运行,压缩js报错处理等</p>
+</blockquote>
+<h4 id="an-zhuang-gulp"><a class="header-anchor" href="#安装gulp">¶</a>安装gulp</h4>
+<p>全局安装gulp命令行:<code>npm i gulp-cli -g</code><br>
+具体项目中:<code>npm i gulp --save-dev</code></p>
+<h4 id="ya-suo-js-bao-cuo-chu-li"><a class="header-anchor" href="#压缩js报错处理">¶</a>压缩js报错处理</h4>
+<p><code>unable to minitfy javascript</code>开始误以为是压缩已经压缩版的js报的错,反复尝试后,发现是某个js文件存在错误,于是在npm上找到了<code>gulp-util</code>这个插件,用于命令行打印错误的js文件,具体配置如下,</p>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">gutil = <span class="built_in">require</span>(<span class="string">'gulp-util'</span>)</span><br><span class="line">gulp.task(<span class="string">'jstask'</span>, <span class="function"><span class="keyword">function</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> gulp.src(<span class="string">'public/js/**/*.js'</span>)</span><br><span class="line">            .pipe(uglify())</span><br><span class="line">            .on(<span class="string">'error'</span>, <span class="function"><span class="keyword">function</span> <span class="params">(err)</span></span> &#123;</span><br><span class="line">                gutil.<span class="built_in">log</span>(gutil.colors.red(<span class="string">'[Error]'</span>), err.toString());</span><br><span class="line">            &#125;)</span><br><span class="line">		    .pipe(gulp.dest(<span class="string">'dist'</span>))</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h4 id="es-6-huan-jing-pei-zhi"><a class="header-anchor" href="#es6环境配置">¶</a>es6环境配置</h4>
+<p>该环境依赖<code>gulp-babel</code>,<code>babel-core</code>,<code>babel-preset-es2015</code>插件,目前这里有个坑点,若下载gulp-babel为8.x.x版本,会与另外两个插件存在兼容问题, 所以这里gulp-babel版本改为7.0.0(测试过),具体操作如下:</p>
+<h5 id="an-zhuang"><a class="header-anchor" href="#安装">¶</a>安装</h5>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i --save-dev gulp-babel@7.0.0 babel-core babel-preset-es2015</span><br></pre></td></tr></table></figure>
+<h5 id="pei-zhi"><a class="header-anchor" href="#配置">¶</a>配置</h5>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> gulp = <span class="built_in">require</span>(<span class="string">'gulp'</span>);</span><br><span class="line"><span class="keyword">const</span> babel = <span class="built_in">require</span>(<span class="string">'gulp-babel'</span>);</span><br><span class="line"> </span><br><span class="line">gulp.task(<span class="string">'default'</span>, () =&gt; &#123;</span><br><span class="line">    <span class="keyword">return</span> gulp.src(<span class="string">'es6/*.js'</span>)</span><br><span class="line">        .pipe(babel(&#123;</span><br><span class="line">            presets: [<span class="string">'es2015'</span>]</span><br><span class="line">        &#125;))</span><br><span class="line">        .pipe(gulp.dest(<span class="string">'build'</span>));</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h4 id="zi-xing-tian-jia-ban-ben-hao"><a class="header-anchor" href="#自行添加版本号">¶</a>自行添加版本号</h4>
+<h5 id="fang-an-yi"><a class="header-anchor" href="#方案一">¶</a>方案一</h5>
+<p>替换后的样式为<code>例:css/base-b43c0fd074.css</code>,依赖<code>gulp-rev</code>,<code>gulp-rev-collector</code>,<br>
+思路为:指定的静态路径中将文件重命名为<code>文件名-hash.后缀</code>,并写入json文件中, 之后替换html中对应的文件路径<br>
+配置</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> rev = <span class="built_in">require</span>(<span class="string">'gulp-rev'</span>),</span><br><span class="line">	  revCollector = <span class="built_in">require</span>(<span class="string">'gulp-rev-collector'</span>);</span><br><span class="line"><span class="keyword">const</span> js_src = <span class="string">'public/js/**/*.js'</span>, <span class="comment">//源</span></span><br><span class="line">	css_src = <span class="string">'public/css/**/*.css'</span>,</span><br><span class="line">	rev_src = <span class="string">'static/public'</span>,  <span class="comment">//输出目录</span></span><br><span class="line">	rev_base = <span class="string">'static'</span>,       <span class="comment">//输出根目录</span></span><br><span class="line">	html_src = <span class="string">'views/**/*.html'</span> </span><br><span class="line"><span class="comment">//输出版本号静态文件</span></span><br><span class="line">gulp.task(<span class="string">'buildRev'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> gulp.src([js_src, css_src])</span><br><span class="line">        .pipe(rev())</span><br><span class="line">        .pipe(gulp.dest(rev_src))   <span class="comment">//输出版本号静态文件</span></span><br><span class="line">        .pipe( rev.manifest() )</span><br><span class="line">        .pipe( gulp.dest( rev_base ) );  <span class="comment">//json输出</span></span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">//替换html</span></span><br><span class="line">gulp.task(<span class="string">'rev'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">					<span class="comment">//匹配json, html文件</span></span><br><span class="line">    <span class="keyword">return</span> gulp.src([<span class="string">'static/*.json'</span>, html_src])</span><br><span class="line">        .pipe( revCollector(&#123;</span><br><span class="line">            replaceReved: <span class="literal">false</span></span><br><span class="line">        &#125;) )</span><br><span class="line">        .pipe( gulp.dest(rev_base) )</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h5 id="fang-an-er"><a class="header-anchor" href="#方案二">¶</a>方案二</h5>
+<p>替换后的样式为<code>例:css/base.css?rev=b43c0fd074</code>,依赖<code>gulp-rev-append</code>,相较于上一个简洁许多,但有个坑点—<code>如果引入的路径为构建的路径，在当前目录下找不到资源的时候该插件无法使用</code>,这是需要修改一下源码,找到node_modules/gulp-rev-append/index.js中:</p>
+<figure class="highlight sqf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line"> data = fs.readFileSync(dependencyPath);</span><br><span class="line"> hash = crypto.createHash(<span class="string">'md5'</span>);</span><br><span class="line"> hash.update(data.<span class="built_in">toString</span>(), <span class="string">'utf8'</span>);</span><br><span class="line">  var <span class="variable">_rev</span>=new <span class="built_in">Date</span>().getTime();</span><br><span class="line">  line = line.replace(groups[<span class="number">2</span>], <span class="variable">_rev</span>);</span><br><span class="line">&#125;<span class="keyword">catch</span>(e)&#123;</span><br><span class="line">	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>由于是通过相对路径之后计算hash,若没找到路径,就按照当前时间计算hash,这里可以在catch中添加</p>
+<figure class="highlight pony"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> _rev=<span class="function"><span class="keyword">new</span> <span class="title">Date</span>().<span class="title">getTime</span>();</span></span><br><span class="line"><span class="function"><span class="title">line</span> = <span class="title">line</span>.<span class="title">replace</span>(groups[<span class="number">2</span>], _rev);</span></span><br></pre></td></tr></table></figure>
+<p>上面的问题迎刃而解了,继续配置<code>gulp-rev-append</code>,如下</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">revAppend = <span class="built_in">require</span>(<span class="string">'gulp-rev-append'</span>);</span><br><span class="line">gulp.task(<span class="string">'revAppend'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  gulp.src(html_src)</span><br><span class="line">    .pipe(revAppend())</span><br><span class="line">    .pipe(gulp.dest(<span class="string">'dist'</span>))</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h4 id="chuan-bing-xing-ren-wu-yun-xing"><a class="header-anchor" href="#串并行任务运行">¶</a>串并行任务运行</h4>
+<p>串行任务:按照任务一个个依次运行, 如先执行版本号添加,后替换版本号任务等等<br>
+依赖<code>gulp-sequence</code>,如下</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> gulpSequence = <span class="built_in">require</span>(<span class="string">'gulp-sequence'</span>)</span><br><span class="line">gulp.task(<span class="string">'sequenceTask'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">cb</span>)</span>&#123;</span><br><span class="line">	gulpSequence(<span class="string">'bulidRev'</span>,<span class="string">'replaceRev'</span>)(cb)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>并行任务:任务同时执行, 开启本地服务, 开启监听任务等<br>
+gulp.task(‘default’, [‘watch’,‘connect’])</p>
+<p>附上package.json依赖<br>
+<img src="/2018/12/19/gulp配置总结/1.png" alt="1"><br>
+<a href="https://github.com/P3T3R-Z/Learning-and-review/tree/master/gulp_use" target="_blank" rel="noopener">源码地址</a></p>
+<blockquote>
+<p>以上基于<code>gulp@3.9.1</code>, 如有错误,欢迎指出!</p>
+</blockquote>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/nodejs/" rel="tag"># nodejs</a>
+          
+            <a href="/tags/gulp/" rel="tag"># gulp</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/12/12/mongodb操作封装/" rel="next" title="nodejs----mongoDB操作封装使用">
+                <i class="fa fa-chevron-left"></i> nodejs----mongoDB操作封装使用
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.gif"
+                alt="P3T3R" />
+            
+              <p class="site-author-name" itemprop="name">P3T3R</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/P3T3R-Z/" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i></a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:1611216092@qq.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i></a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="161121602" target="_blank" title="QQ">
+                      
+                        <i class="fa fa-fw fa-161121602"></i></a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#an-zhuang-gulp"><span class="nav-text">¶安装gulp</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ya-suo-js-bao-cuo-chu-li"><span class="nav-text">¶压缩js报错处理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#es-6-huan-jing-pei-zhi"><span class="nav-text">¶es6环境配置</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#an-zhuang"><span class="nav-text">¶安装</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#pei-zhi"><span class="nav-text">¶配置</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#zi-xing-tian-jia-ban-ben-hao"><span class="nav-text">¶自行添加版本号</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#fang-an-yi"><span class="nav-text">¶方案一</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#fang-an-er"><span class="nav-text">¶方案二</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#chuan-bing-xing-ren-wu-yun-xing"><span class="nav-text">¶串并行任务运行</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">P3T3R</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'xbiDhpPJfUh2YRD8uhN8fFXl-gzGzoHsz',
+        appKey: '9Aqg2Qbrk8tckTNeMgcGkUgF',
+        placeholder: 'Just go go',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
